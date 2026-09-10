@@ -51,6 +51,27 @@ describe("LocalBackend", () => {
     expect(data.settings).toEqual({ reminderEnabled: false });
   });
 
+  it("removes a specific watering event", async () => {
+    const b = getWateringBackend(cfg);
+    await b.addEvents([
+      { plantId: "monstera", date: "2026-09-10", loggedAt: "a" },
+      { plantId: "monstera", date: "2026-09-17", loggedAt: "b" },
+    ]);
+    const data = await b.removeEvent("monstera", "2026-09-10");
+    expect(data.events).toEqual([
+      { plantId: "monstera", date: "2026-09-17", loggedAt: "b" },
+    ]);
+  });
+
+  it("keeps household settings when events change", async () => {
+    const b = getWateringBackend(cfg);
+    await b.setSettings({ reminderEnabled: false });
+    const data = await b.addEvents([
+      { plantId: "monstera", date: "2026-09-10", loggedAt: "a" },
+    ]);
+    expect(data.settings?.reminderEnabled).toBe(false);
+  });
+
   it("replaces a plant override", async () => {
     const b = getWateringBackend(cfg);
     const data = await b.setOverride("monstera", {

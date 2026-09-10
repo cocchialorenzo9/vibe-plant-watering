@@ -46,7 +46,18 @@ interface StoreValue {
 const Ctx = createContext<StoreValue | null>(null);
 
 export function StoreProvider({ children }: { children: ReactNode }) {
-  const [today] = useState(() => todayInBerlin());
+  const [today, setToday] = useState(() => todayInBerlin());
+  useEffect(() => {
+    const sync = () => setToday(todayInBerlin());
+    const timer = setInterval(sync, 60_000);
+    document.addEventListener("visibilitychange", sync);
+    window.addEventListener("focus", sync);
+    return () => {
+      clearInterval(timer);
+      document.removeEventListener("visibilitychange", sync);
+      window.removeEventListener("focus", sync);
+    };
+  }, []);
   const [config, setConfig] = useState<AppConfig>(() => loadConfig());
   const [plants, setPlants] = useState<Plant[]>([]);
   const [watering, setWatering] = useState<WateringData>({
@@ -112,21 +123,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const undoWatering = useCallback(
     async (plantId: string, date: string) => {
-      // Local backend only supports this cleanly; GitHub path rewrites the file.
-      const filtered: WateringData = {
-        events: watering.events.filter(
-          (e) => !(e.plantId === plantId && e.date === date),
-        ),
-        overrides: watering.overrides,
-      };
-      setWatering(filtered);
-      try {
-        localStorage.setItem("pw:watering", JSON.stringify(filtered));
-      } catch {
-        /* ignore */
-      }
+      const next = await backend.removeEvent(plantId, date);
+      setWatering(next);
     },
-    [watering],
+    [backend],
   );
 
   const setOverride = useCallback(

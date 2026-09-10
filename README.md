@@ -41,10 +41,13 @@ of GitHub for development and demoing.
    ```
 3. In the app's **Settings → Connection**, enter the repo owner, `plant-watering-data`,
    and a fine-grained PAT with **Contents: Read and write** scoped to that repo only.
-4. For the reminder, add repo secrets: `DATA_TOKEN` (contents:read on the data
-   repo), `DATA_OWNER`, `DATA_REPO`, `RESEND_API_KEY`, `REMINDER_TO`; optional
-   repo variables `REMINDER_FROM`, `APP_URL`, `DATA_PATH`.
+4. For the reminder, add repo secrets: `DATA_TOKEN` (contents **read + write**
+   on the data repo — write is used only to stamp a per-day "already sent"
+   marker), `DATA_OWNER`, `DATA_REPO`, `RESEND_API_KEY`, `REMINDER_TO`;
+   optional repo variables `REMINDER_FROM`, `APP_URL`, `DATA_PATH`.
    Test it with **Actions → Evening watering reminder → Run workflow** (dry run).
+   The job fires hourly 16–21 UTC, acts only during the Berlin evening, and
+   emails at most once per day.
 
 ## Adding a plant (Claude Code)
 

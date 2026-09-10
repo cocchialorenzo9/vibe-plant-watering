@@ -45,10 +45,24 @@ function merge(
   };
 }
 
+function without(
+  base: WateringData,
+  plantId: string,
+  date: string,
+): WateringData {
+  return {
+    ...base,
+    events: base.events.filter(
+      (e) => !(e.plantId === plantId && e.date === date),
+    ),
+  };
+}
+
 export interface WateringBackend {
   readonly kind: "local" | "github";
   load(signal?: AbortSignal): Promise<WateringData>;
   addEvents(events: WateringEvent[]): Promise<WateringData>;
+  removeEvent(plantId: string, date: string): Promise<WateringData>;
   setOverride(plantId: string, override: PlantOverride): Promise<WateringData>;
   setSettings(patch: Partial<HouseholdSettings>): Promise<WateringData>;
 }
@@ -100,6 +114,12 @@ class LocalBackend implements WateringBackend {
 
   async addEvents(events: WateringEvent[]): Promise<WateringData> {
     const next = merge((await this.load()) ?? EMPTY, events);
+    this.write(next);
+    return next;
+  }
+
+  async removeEvent(plantId: string, date: string): Promise<WateringData> {
+    const next = without((await this.load()) ?? EMPTY, plantId, date);
     this.write(next);
     return next;
   }
@@ -193,11 +213,16 @@ class GitHubBackend implements WateringBackend {
         }),
       });
       if (res.ok) return next;
-      if (res.status === 409 || res.status === 422) {
-        lastErr = new Error(`GitHub write conflict (${res.status})`);
+      // 409 is a stale-sha conflict — refetch and retry. Everything else
+      // (401/403 auth, 404 path, 422 payload) is terminal.
+      if (res.status === 409) {
+        lastErr = new Error("GitHub write conflict (409)");
         continue;
       }
-      throw new Error(`GitHub write failed (${res.status})`);
+      const detail = await res.text().catch(() => "");
+      throw new Error(
+        `GitHub write failed (${res.status})${detail ? `: ${detail.slice(0, 200)}` : ""}`,
+      );
     }
     throw lastErr ?? new Error("GitHub write failed");
   }
@@ -206,6 +231,13 @@ class GitHubBackend implements WateringBackend {
     return this.commit(
       (cur) => merge(cur, events),
       `Log watering: ${events.map((e) => e.plantId).join(", ")}`,
+    );
+  }
+
+  async removeEvent(plantId: string, date: string): Promise<WateringData> {
+    return this.commit(
+      (cur) => without(cur, plantId, date),
+      `Undo watering: ${plantId} ${date}`,
     );
   }
 

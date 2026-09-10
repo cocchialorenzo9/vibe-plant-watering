@@ -2,10 +2,10 @@ name: Evening watering reminder
 
 on:
   schedule:
-    # 17:00 and 18:00 UTC cover 19:00 Europe/Berlin across CET and CEST.
-    # The script re-checks the Berlin wall-clock and only the 19:00 run acts.
-    - cron: "0 17 * * *"
-    - cron: "0 18 * * *"
+    # 19:00 Europe/Berlin is 17:00 UTC (CEST) or 18:00 UTC (CET). Fire an
+    # hourly band around both to absorb GitHub cron drift; the job gates to
+    # the Berlin evening and settings.lastRemindedOn stops repeat sends.
+    - cron: "0 16-21 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -25,12 +25,14 @@ jobs:
         with:
           node-version: 24 # unflagged TypeScript type-stripping for the domain imports
 
-      - name: Gate to 19:00 Europe/Berlin
+      - name: Gate to the Berlin evening
         id: gate
         run: |
-          HOUR=$(TZ=Europe/Berlin date +%H)
+          HOUR=$(TZ=Europe/Berlin date +%-H)
           echo "Berlin hour: $HOUR"
-          if [ "$HOUR" = "19" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          # 19:00–21:59 covers the target plus cron drift; the dedup marker
+          # in the data file prevents a second email the same evening.
+          if { [ "$HOUR" -ge 19 ] && [ "$HOUR" -le 21 ]; } || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"

@@ -50,15 +50,19 @@ export interface WateringEvent {
 /** Per-plant schedule adjustments. Lives in the private data repo. */
 export interface PlantOverride {
   intervalOverride?: SeasonalInterval;
-  /** Pin the next watering to this date; cleared by the next WateringEvent. */
+  /**
+   * Pin the next watering to this date; automatically ignored once a later
+   * WateringEvent exists. "Skip next" is expressed by setting this to the
+   * skipped-forward date, so it expires the same way.
+   */
   nextDueAnchor?: IsoDate | null;
-  /** Skip the upcoming due date, pushing it forward one interval. */
-  skipNext?: boolean;
 }
 
 export interface HouseholdSettings {
   /** Whether the 7pm evening reminder email is sent. Default true. */
   reminderEnabled: boolean;
+  /** ISO date the reminder job last emailed; its once-per-day guard. */
+  lastRemindedOn?: IsoDate;
 }
 
 export interface WateringData {

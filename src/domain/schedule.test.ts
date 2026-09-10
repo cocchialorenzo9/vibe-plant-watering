@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   effectiveInterval,
   nextDueDate,
+  skippedNextDate,
   waterStatus,
   computeSchedule,
   forwardSchedule,
@@ -75,9 +76,8 @@ describe("nextDueDate", () => {
     );
   });
 
-  it("pushes the due date forward one interval when skipNext is set", () => {
-    const o: PlantOverride = { skipNext: true };
-    expect(nextDueDate(plant, o, [ev("2026-07-01")], "2026-07-03")).toBe(
+  it("skippedNextDate advances one interval past the current due date", () => {
+    expect(skippedNextDate(plant, undefined, [ev("2026-07-01")], "2026-07-03")).toBe(
       "2026-07-15",
     );
   });

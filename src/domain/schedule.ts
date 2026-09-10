@@ -52,17 +52,22 @@ export function nextDueDate(
   const pinned = override?.nextDueAnchor ?? null;
   const anchorSuperseded = pinned != null && last != null && last >= pinned;
 
-  let due: IsoDate;
   if (pinned != null && !anchorSuperseded) {
-    due = pinned;
-  } else {
-    due = addDays(anchor, intervalForDate(interval, anchor));
+    return pinned;
   }
+  return addDays(anchor, intervalForDate(interval, anchor));
+}
 
-  if (override?.skipNext) {
-    due = addDays(due, intervalForDate(interval, due));
-  }
-  return due;
+/** The date "Skip next" should pin the next watering to. */
+export function skippedNextDate(
+  plant: Plant,
+  override: PlantOverride | undefined,
+  events: WateringEvent[],
+  today: IsoDate,
+): IsoDate {
+  const interval = effectiveInterval(plant, override);
+  const due = nextDueDate(plant, override, events, today);
+  return addDays(due, intervalForDate(interval, due));
 }
 
 export function waterStatus(nextDue: IsoDate, today: IsoDate): WaterStatus {

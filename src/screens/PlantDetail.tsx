@@ -17,7 +17,7 @@ import { EditScheduleSheet } from "../components/EditScheduleSheet";
 import { useStore } from "../state/store";
 import { useToast } from "../components/Toast";
 import { plantAvatarUrl } from "../data/plants";
-import { wateredOn, nextDueDate } from "../domain/schedule";
+import { wateredOn, nextDueDate, skippedNextDate } from "../domain/schedule";
 import { shortDate, relativeDay } from "../lib/format";
 import { diffDays } from "../lib/date";
 import "./screens.css";
@@ -96,8 +96,9 @@ export function PlantDetail() {
 
   async function skipNext() {
     try {
-      await setOverride(id, { ...override, skipNext: true });
-      toast.show({ message: "Skipped this watering" });
+      const skipTo = skippedNextDate(plant!, override, watering.events, today);
+      await setOverride(id, { ...override, nextDueAnchor: skipTo });
+      toast.show({ message: `Skipped — next watering ${shortDate(skipTo)}` });
     } catch (e) {
       toast.show({
         message: e instanceof Error ? e.message : "Could not save",
