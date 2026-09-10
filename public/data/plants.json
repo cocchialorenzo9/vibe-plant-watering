@@ -1,0 +1,142 @@
+[
+  {
+    "id": "monstera-deliciosa",
+    "nickname": "Monstera",
+    "location": "Living room window",
+    "species": {
+      "scientificName": "Monstera deliciosa",
+      "commonNames": ["Swiss cheese plant", "Split-leaf philodendron"],
+      "shortDescription": "A tropical climbing evergreen native to the rainforests of southern Mexico and Central America, grown worldwide as a houseplant.",
+      "origin": "Native to the tropical rainforests of southern Mexico and Central America, where it climbs tree trunks using aerial roots and can reach 20 m in height.",
+      "curiosities": [
+        "The name deliciosa refers to its edible fruit, which tastes like a blend of pineapple and banana when fully ripe.",
+        "Leaf holes, called fenestrations, are thought to help the plant withstand strong winds and let light reach lower leaves.",
+        "Unripe fruit contains oxalic acid and is an irritant, so it must be eaten only when fully mature."
+      ],
+      "toxicity": "Leaves and unripe fruit are toxic to cats and dogs and irritating to humans (calcium oxalate crystals).",
+      "sources": [
+        { "title": "Wikipedia — Monstera deliciosa", "url": "https://en.wikipedia.org/wiki/Monstera_deliciosa" },
+        { "title": "Wikispecies — Monstera deliciosa", "url": "https://species.wikimedia.org/wiki/Monstera_deliciosa" }
+      ]
+    },
+    "care": {
+      "waterIntervalDays": { "summer": 7, "winter": 14 },
+      "light": "Bright indirect",
+      "idealTempC": [18, 27]
+    },
+    "avatar": "avatars/monstera-deliciosa.png",
+    "addedOn": "2026-08-12"
+  },
+  {
+    "id": "golden-pothos",
+    "nickname": "Golden Pothos",
+    "location": "Kitchen shelf",
+    "species": {
+      "scientificName": "Epipremnum aureum",
+      "commonNames": ["Golden pothos", "Devil's ivy", "Money plant"],
+      "shortDescription": "A hardy evergreen vine from the arum family, one of the most popular and forgiving houseplants.",
+      "origin": "Native to Mo'orea in the Society Islands of French Polynesia; now naturalised across tropical forests worldwide.",
+      "curiosities": [
+        "Called 'devil's ivy' because it is nearly impossible to kill and stays green even in low light.",
+        "In the wild its leaves can grow over a metre long, but indoors they usually stay palm-sized.",
+        "It rarely flowers in cultivation — the last recorded spontaneous bloom was in 1964."
+      ],
+      "toxicity": "Toxic to cats, dogs and humans if chewed or swallowed (insoluble calcium oxalates).",
+      "sources": [
+        { "title": "Wikipedia — Epipremnum aureum", "url": "https://en.wikipedia.org/wiki/Epipremnum_aureum" },
+        { "title": "Wikispecies — Epipremnum aureum", "url": "https://species.wikimedia.org/wiki/Epipremnum_aureum" }
+      ]
+    },
+    "care": {
+      "waterIntervalDays": { "summer": 7, "winter": 12 },
+      "light": "Low to bright indirect",
+      "idealTempC": [17, 30]
+    },
+    "avatar": "avatars/golden-pothos.png",
+    "addedOn": "2026-08-14"
+  },
+  {
+    "id": "fiddle-leaf-fig",
+    "nickname": "Fiddle Leaf Fig",
+    "location": "Bedroom corner",
+    "species": {
+      "scientificName": "Ficus lyrata",
+      "commonNames": ["Fiddle-leaf fig", "Banjo fig"],
+      "shortDescription": "A West African fig with large, violin-shaped leathery leaves, popular as a statement indoor tree.",
+      "origin": "Native to lowland tropical rainforest in western Africa, from Cameroon west to Sierra Leone.",
+      "curiosities": [
+        "The species name lyrata and the common name both refer to the lyre- or fiddle-shaped leaves.",
+        "In the wild it often begins life as an epiphyte on another tree, then sends roots down and can strangle its host.",
+        "It resents being moved and may drop leaves after a change in light or location."
+      ],
+      "toxicity": "Sap is mildly toxic and can irritate skin and the mouth of pets and humans.",
+      "sources": [
+        { "title": "Wikipedia — Ficus lyrata", "url": "https://en.wikipedia.org/wiki/Ficus_lyrata" },
+        { "title": "Wikispecies — Ficus lyrata", "url": "https://species.wikimedia.org/wiki/Ficus_lyrata" }
+      ]
+    },
+    "care": {
+      "waterIntervalDays": { "summer": 7, "winter": 14 },
+      "light": "Bright indirect to some direct",
+      "idealTempC": [16, 24]
+    },
+    "avatar": "avatars/fiddle-leaf-fig.png",
+    "addedOn": "2026-08-20"
+  },
+  {
+    "id": "snake-plant",
+    "nickname": "Snake Plant",
+    "location": "Hallway",
+    "species": {
+      "scientificName": "Dracaena trifasciata",
+      "commonNames": ["Snake plant", "Mother-in-law's tongue", "Saint George's sword"],
+      "shortDescription": "A stiff-leaved evergreen succulent from West Africa, extremely drought-tolerant and low-light tolerant.",
+      "origin": "Native to tropical West Africa, from Nigeria east to the Democratic Republic of the Congo.",
+      "curiosities": [
+        "Formerly classified as Sansevieria trifasciata; moved to Dracaena on genetic evidence in 2017.",
+        "It performs CAM photosynthesis, opening its pores at night, so it keeps releasing oxygen after dark.",
+        "Its leaf fibres, called bowstring hemp, have traditionally been used to make rope and baskets."
+      ],
+      "toxicity": "Mildly toxic to cats and dogs (saponins); can cause nausea and drooling if eaten.",
+      "sources": [
+        { "title": "Wikipedia — Dracaena trifasciata", "url": "https://en.wikipedia.org/wiki/Dracaena_trifasciata" },
+        { "title": "Wikispecies — Dracaena trifasciata", "url": "https://species.wikimedia.org/wiki/Dracaena_trifasciata" }
+      ]
+    },
+    "care": {
+      "waterIntervalDays": { "summer": 14, "winter": 28 },
+      "light": "Low to bright indirect",
+      "idealTempC": [15, 29]
+    },
+    "avatar": "avatars/snake-plant.png",
+    "addedOn": "2026-08-12"
+  },
+  {
+    "id": "aloe-vera",
+    "nickname": "Aloe Vera",
+    "location": "Kitchen windowsill",
+    "species": {
+      "scientificName": "Aloe vera",
+      "commonNames": ["Aloe vera", "True aloe", "Burn plant"],
+      "shortDescription": "A short-stemmed succulent with thick, gel-filled leaves, cultivated for millennia for its soothing gel.",
+      "origin": "Origin uncertain; likely the Arabian Peninsula, now cultivated and naturalised across arid regions worldwide.",
+      "curiosities": [
+        "The leaf gel is about 99% water; the rest is a mix of vitamins, enzymes and polysaccharides.",
+        "It has been used medicinally for over 6,000 years — depictions appear in ancient Egyptian carvings.",
+        "The yellow latex just under the skin is a strong laxative and quite bitter, unlike the clear inner gel."
+      ],
+      "toxicity": "The leaf latex is toxic to cats, dogs and humans if ingested; the clear inner gel is generally safe.",
+      "sources": [
+        { "title": "Wikipedia — Aloe vera", "url": "https://en.wikipedia.org/wiki/Aloe_vera" },
+        { "title": "Wikispecies — Aloe vera", "url": "https://species.wikimedia.org/wiki/Aloe_vera" }
+      ]
+    },
+    "care": {
+      "waterIntervalDays": { "summer": 21, "winter": 35 },
+      "light": "Bright, some direct sun",
+      "idealTempC": [13, 27]
+    },
+    "avatar": "avatars/aloe-vera.png",
+    "addedOn": "2026-08-12"
+  }
+]

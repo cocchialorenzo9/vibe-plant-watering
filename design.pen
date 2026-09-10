@@ -1,0 +1,3893 @@
+{
+  "version": "2.17",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": -4000,
+      "y": -4000,
+      "name": "Frame (unused)",
+      "clip": true,
+      "width": 800,
+      "height": 600,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    },
+    {
+      "type": "frame",
+      "id": "aQNXu",
+      "x": -3080,
+      "y": -4000,
+      "name": "StatusBar",
+      "reusable": true,
+      "width": 390,
+      "height": 62,
+      "fill": "#00000000",
+      "padding": [
+        0,
+        24
+      ],
+      "justifyContent": "space_between",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "xkhnV",
+          "name": "Time",
+          "fill": "$ink",
+          "content": "9:41",
+          "fontFamily": "$font-body",
+          "fontSize": 15,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "YTyY8",
+          "name": "Indicators",
+          "gap": 6,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "NYa5d",
+              "name": "signal-high",
+              "width": 18,
+              "height": 18,
+              "icon": "signal-high",
+              "library": "lucide",
+              "fill": "$ink"
+            },
+            {
+              "type": "icon",
+              "id": "rdLUG",
+              "name": "wifi",
+              "width": 18,
+              "height": 18,
+              "icon": "wifi",
+              "library": "lucide",
+              "fill": "$ink"
+            },
+            {
+              "type": "icon",
+              "id": "s5h6r",
+              "name": "battery-full",
+              "width": 18,
+              "height": 18,
+              "icon": "battery-full",
+              "library": "lucide",
+              "fill": "$ink"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "anAUh",
+      "x": -3080,
+      "y": -3818,
+      "name": "TabBar",
+      "reusable": true,
+      "width": 390,
+      "fill": "#00000000",
+      "padding": [
+        12,
+        16
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "Nfzkf",
+          "name": "Bar",
+          "width": "fill_container",
+          "fill": "#FFFFFFF2",
+          "cornerRadius": "$r-full",
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#1B3A281F",
+            "offset": {
+              "x": 0,
+              "y": 6
+            },
+            "blur": 18
+          },
+          "gap": 4,
+          "padding": 6,
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "yZPyt",
+              "name": "Tab Plants",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 3,
+              "padding": [
+                6,
+                4
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ZCSpi",
+                  "name": "IconWrap",
+                  "fill": "$sage",
+                  "cornerRadius": "$r-full",
+                  "padding": [
+                    5,
+                    14
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "hVOL5",
+                      "name": "Icon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "sprout",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "vkmMD",
+                  "name": "Label",
+                  "fill": "$accent",
+                  "content": "Plants",
+                  "fontFamily": "$font-body",
+                  "fontSize": 10,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "J5Dtsp",
+              "name": "Tab Add",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 3,
+              "padding": [
+                6,
+                4
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "r0Bno",
+                  "name": "IconWrap",
+                  "fill": "#00000000",
+                  "cornerRadius": "$r-full",
+                  "padding": [
+                    5,
+                    14
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "lanTI",
+                      "name": "Icon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "plus",
+                      "library": "lucide",
+                      "fill": "$ink-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "N1xnd",
+                  "name": "Label",
+                  "fill": "$ink-muted",
+                  "content": "Add",
+                  "fontFamily": "$font-body",
+                  "fontSize": 10,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "S5G8GE",
+              "name": "Tab History",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 3,
+              "padding": [
+                6,
+                4
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "vtJCO",
+                  "name": "IconWrap",
+                  "fill": "#00000000",
+                  "cornerRadius": "$r-full",
+                  "padding": [
+                    5,
+                    14
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "Z6xlM",
+                      "name": "Icon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "history",
+                      "library": "lucide",
+                      "fill": "$ink-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "l9jp9",
+                  "name": "Label",
+                  "fill": "$ink-muted",
+                  "content": "History",
+                  "fontFamily": "$font-body",
+                  "fontSize": 10,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "aZLSu",
+              "name": "Tab Settings",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 3,
+              "padding": [
+                6,
+                4
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "wqRVt",
+                  "name": "IconWrap",
+                  "fill": "#00000000",
+                  "cornerRadius": "$r-full",
+                  "padding": [
+                    5,
+                    14
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "WAhzk",
+                      "name": "Icon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "settings-2",
+                      "library": "lucide",
+                      "fill": "$ink-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "p8xGGw",
+                  "name": "Label",
+                  "fill": "$ink-muted",
+                  "content": "Settings",
+                  "fontFamily": "$font-body",
+                  "fontSize": 10,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "z0L6z",
+      "x": -3080,
+      "y": -3605,
+      "name": "Avatar Monstera",
+      "reusable": true,
+      "clip": true,
+      "width": 96,
+      "height": 96,
+      "fill": {
+        "type": "image",
+        "enabled": true,
+        "url": "./images/generated-1789028736267.png",
+        "mode": "fill"
+      },
+      "cornerRadius": "$r-full"
+    },
+    {
+      "type": "frame",
+      "id": "YFwtO",
+      "x": -2952,
+      "y": -3605,
+      "name": "Avatar Snake",
+      "reusable": true,
+      "clip": true,
+      "width": 96,
+      "height": 96,
+      "fill": {
+        "type": "image",
+        "enabled": true,
+        "url": "./images/generated-1789028736242.png",
+        "mode": "fill"
+      },
+      "cornerRadius": "$r-full"
+    },
+    {
+      "type": "frame",
+      "id": "I0dsj",
+      "x": -2824,
+      "y": -3605,
+      "name": "Avatar Pothos",
+      "reusable": true,
+      "clip": true,
+      "width": 96,
+      "height": 96,
+      "fill": {
+        "type": "image",
+        "enabled": true,
+        "url": "./images/generated-1789028735629.png",
+        "mode": "fill"
+      },
+      "cornerRadius": "$r-full"
+    },
+    {
+      "type": "frame",
+      "id": "c66dyU",
+      "x": -2696,
+      "y": -3605,
+      "name": "Avatar Fiddle",
+      "reusable": true,
+      "clip": true,
+      "width": 96,
+      "height": 96,
+      "fill": {
+        "type": "image",
+        "enabled": true,
+        "url": "./images/generated-1789028735868.png",
+        "mode": "fill"
+      },
+      "cornerRadius": "$r-full"
+    },
+    {
+      "type": "frame",
+      "id": "AYKEJ",
+      "x": -2568,
+      "y": -3605,
+      "name": "Avatar Aloe",
+      "reusable": true,
+      "clip": true,
+      "width": 96,
+      "height": 96,
+      "fill": {
+        "type": "image",
+        "enabled": true,
+        "url": "./images/generated-1789028736103.png",
+        "mode": "fill"
+      },
+      "cornerRadius": "$r-full"
+    },
+    {
+      "type": "frame",
+      "id": "VL49v",
+      "x": -3080,
+      "y": -3389,
+      "name": "PrimaryButton",
+      "reusable": true,
+      "fill": "$accent",
+      "cornerRadius": "$r-full",
+      "gap": 8,
+      "padding": [
+        15,
+        22
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "wFMPH",
+          "name": "Label",
+          "fill": "$on-inverse",
+          "content": "Continue",
+          "fontFamily": "$font-body",
+          "fontSize": 15,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "n1t1w",
+      "x": -3080,
+      "y": -3269,
+      "name": "PlantCardWater",
+      "reusable": true,
+      "width": 340,
+      "fill": "$card",
+      "cornerRadius": "$r-lg",
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#1B3A2814",
+        "offset": {
+          "x": 0,
+          "y": 4
+        },
+        "blur": 14
+      },
+      "gap": 14,
+      "padding": 14,
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "k6YQ04",
+          "type": "ref",
+          "ref": "z0L6z",
+          "name": "Avatar",
+          "width": 56,
+          "height": 56
+        },
+        {
+          "type": "frame",
+          "id": "t5Niw",
+          "name": "Info",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 4,
+          "children": [
+            {
+              "type": "text",
+              "id": "i4Iv3",
+              "name": "Name",
+              "fill": "$ink",
+              "content": "Monstera",
+              "fontFamily": "$font-head",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "jPqHL",
+              "name": "Status",
+              "gap": 5,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "SV8t4",
+                  "name": "Icon",
+                  "width": 13,
+                  "height": 13,
+                  "icon": "droplet",
+                  "library": "lucide",
+                  "fill": "$water"
+                },
+                {
+                  "type": "text",
+                  "id": "LOlBV",
+                  "name": "StatusText",
+                  "fill": "$water",
+                  "content": "Needs water today",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "M3Q4e",
+          "name": "WaterButton",
+          "fill": "$water-tint",
+          "cornerRadius": "$r-full",
+          "gap": 6,
+          "padding": [
+            9,
+            14
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "m8CiT",
+              "name": "Icon",
+              "width": 14,
+              "height": 14,
+              "icon": "droplet",
+              "library": "lucide",
+              "fill": "$water"
+            },
+            {
+              "type": "text",
+              "id": "L5KN4",
+              "name": "Label",
+              "fill": "$water",
+              "content": "Water",
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "PgK3d",
+      "x": -3080,
+      "y": -3129,
+      "name": "PlantRowUpcoming",
+      "reusable": true,
+      "width": 340,
+      "fill": "$card",
+      "cornerRadius": "$r-md",
+      "gap": 12,
+      "padding": 12,
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "LkRYz",
+          "type": "ref",
+          "ref": "YFwtO",
+          "name": "Avatar",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "type": "frame",
+          "id": "k1xa2n",
+          "name": "Info",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 2,
+          "children": [
+            {
+              "type": "text",
+              "id": "s0YeIz",
+              "name": "Name",
+              "fill": "$ink",
+              "content": "Snake Plant",
+              "fontFamily": "$font-head",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "aMzRJ",
+              "name": "Sub",
+              "fill": "$ink-muted",
+              "content": "Every 14 days",
+              "fontFamily": "$font-body",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "sjNB2",
+          "name": "Countdown",
+          "fill": "$sage-tint",
+          "cornerRadius": "$r-full",
+          "padding": [
+            6,
+            10
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "gko4d",
+              "name": "Text",
+              "fill": "$accent",
+              "content": "in 5d",
+              "fontFamily": "$font-data",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "PVXSO",
+      "x": -3080,
+      "y": -3045,
+      "name": "01 Dashboard",
+      "clip": true,
+      "width": 390,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "gTtVt",
+          "type": "ref",
+          "ref": "aQNXu",
+          "name": "StatusBar",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "cskp2",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            6,
+            18,
+            24,
+            18
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "L2eQK",
+              "name": "Header",
+              "width": "fill_container",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ETW3N",
+                  "name": "Titles",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "QCb6w",
+                      "name": "Greeting",
+                      "fill": "$ink-muted",
+                      "content": "Wednesday, Sep 10",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "BmoMx",
+                      "name": "Title",
+                      "fill": "$ink",
+                      "content": "My Plants",
+                      "fontFamily": "$font-head",
+                      "fontSize": 26,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "hNpGl",
+                  "name": "Profile",
+                  "width": 38,
+                  "height": 38,
+                  "fill": "$sage",
+                  "cornerRadius": "$r-full",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "oVeuL",
+                      "name": "Initial",
+                      "fill": "$accent",
+                      "content": "L",
+                      "fontFamily": "$font-head",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "aOfiD",
+              "name": "Summary",
+              "width": "fill_container",
+              "fill": "$inverse",
+              "cornerRadius": "$r-lg",
+              "gap": 16,
+              "padding": 18,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "S9TtKT",
+                  "name": "Figure",
+                  "fill": "$on-inverse",
+                  "content": "2",
+                  "fontFamily": "$font-data",
+                  "fontSize": 44,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "JNqwJ",
+                  "name": "Text",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "CL9sm",
+                      "name": "Line1",
+                      "fill": "$on-inverse",
+                      "content": "plants need water today",
+                      "fontFamily": "$font-head",
+                      "fontSize": 17,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "cmy86",
+                      "name": "Line2",
+                      "fill": "$sage",
+                      "content": "1 more coming up in 2 days",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "q07K8",
+              "name": "Section Water today",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "aVxmx",
+                  "name": "Heading",
+                  "fill": "$ink-secondary",
+                  "content": "Water today",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "id": "j0onO",
+                  "type": "ref",
+                  "ref": "n1t1w",
+                  "name": "Card Monstera deliciosa",
+                  "width": "fill_container",
+                  "descendants": {
+                    "k6YQ04": {
+                      "id": "q4qUWj",
+                      "type": "ref",
+                      "ref": "z0L6z",
+                      "name": "Avatar",
+                      "width": 56,
+                      "height": 56
+                    },
+                    "i4Iv3": {
+                      "content": "Monstera deliciosa"
+                    },
+                    "SV8t4": {
+                      "fill": "$water"
+                    },
+                    "LOlBV": {
+                      "content": "Needs water today",
+                      "fill": "$water"
+                    }
+                  }
+                },
+                {
+                  "id": "aUnLc",
+                  "type": "ref",
+                  "ref": "n1t1w",
+                  "name": "Card Golden Pothos",
+                  "width": "fill_container",
+                  "descendants": {
+                    "k6YQ04": {
+                      "id": "v7JY7L",
+                      "type": "ref",
+                      "ref": "I0dsj",
+                      "name": "Avatar",
+                      "width": 56,
+                      "height": 56
+                    },
+                    "i4Iv3": {
+                      "content": "Golden Pothos"
+                    },
+                    "SV8t4": {
+                      "fill": "$warn"
+                    },
+                    "LOlBV": {
+                      "content": "2 days overdue",
+                      "fill": "$warn"
+                    },
+                    "M3Q4e": {
+                      "fill": "$warn-tint"
+                    },
+                    "m8CiT": {
+                      "fill": "$warn"
+                    },
+                    "L5KN4": {
+                      "fill": "$warn"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Sxvs0",
+              "name": "Section Coming up",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "YJWNz",
+                  "name": "Heading",
+                  "fill": "$ink-secondary",
+                  "content": "Coming up",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "id": "gG0xz",
+                  "type": "ref",
+                  "ref": "PgK3d",
+                  "name": "Row Fiddle Leaf Fig",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LkRYz": {
+                      "id": "gFYab",
+                      "type": "ref",
+                      "ref": "c66dyU",
+                      "name": "Avatar",
+                      "width": 40,
+                      "height": 40
+                    },
+                    "s0YeIz": {
+                      "content": "Fiddle Leaf Fig"
+                    },
+                    "aMzRJ": {
+                      "content": "Every 7 days"
+                    },
+                    "sjNB2": {
+                      "fill": "$water-tint"
+                    },
+                    "gko4d": {
+                      "content": "in 2d",
+                      "fill": "$water"
+                    }
+                  }
+                },
+                {
+                  "id": "COnGl",
+                  "type": "ref",
+                  "ref": "PgK3d",
+                  "name": "Row Snake Plant",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LkRYz": {
+                      "id": "n2Msi",
+                      "type": "ref",
+                      "ref": "YFwtO",
+                      "name": "Avatar",
+                      "width": 40,
+                      "height": 40
+                    },
+                    "s0YeIz": {
+                      "content": "Snake Plant"
+                    },
+                    "aMzRJ": {
+                      "content": "Every 14 days"
+                    },
+                    "sjNB2": {
+                      "fill": "$sage-tint"
+                    },
+                    "gko4d": {
+                      "content": "in 5d",
+                      "fill": "$accent"
+                    }
+                  }
+                },
+                {
+                  "id": "OgWwr",
+                  "type": "ref",
+                  "ref": "PgK3d",
+                  "name": "Row Aloe Vera",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LkRYz": {
+                      "id": "KWOOO",
+                      "type": "ref",
+                      "ref": "AYKEJ",
+                      "name": "Avatar",
+                      "width": 40,
+                      "height": 40
+                    },
+                    "s0YeIz": {
+                      "content": "Aloe Vera"
+                    },
+                    "aMzRJ": {
+                      "content": "Every 21 days"
+                    },
+                    "sjNB2": {
+                      "fill": "$sage-tint"
+                    },
+                    "gko4d": {
+                      "content": "in 9d",
+                      "fill": "$accent"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "adHIM",
+          "type": "ref",
+          "ref": "anAUh",
+          "name": "TabBar",
+          "width": "fill_container"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "qRluX",
+      "x": -3200,
+      "y": -3600,
+      "name": "BackHeader",
+      "reusable": true,
+      "width": 354,
+      "gap": 12,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "ziTVG",
+          "name": "Back",
+          "width": 38,
+          "height": 38,
+          "fill": "$card",
+          "cornerRadius": "$r-full",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "iwdX2",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "icon": "chevron-left",
+              "library": "lucide",
+              "fill": "$ink"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "G84rh",
+          "name": "Title",
+          "fill": "$ink",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Title",
+          "fontFamily": "$font-head",
+          "fontSize": 26,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "gD7yz",
+      "x": -2550,
+      "y": -3045,
+      "name": "02 Dashboard Empty",
+      "clip": true,
+      "width": 390,
+      "height": 844,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "aq4MH",
+          "type": "ref",
+          "ref": "aQNXu",
+          "name": "StatusBar",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "zYoE0",
+          "name": "Content",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            6,
+            18,
+            24,
+            18
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "WYKL8",
+              "name": "Title",
+              "fill": "$ink",
+              "content": "My Plants",
+              "fontFamily": "$font-head",
+              "fontSize": 26,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "p1q5VA",
+              "name": "EmptyCard",
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "$sage-tint",
+              "cornerRadius": "$r-lg",
+              "layout": "vertical",
+              "gap": 14,
+              "padding": 32,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "BuZA7",
+                  "name": "IconWrap",
+                  "width": 72,
+                  "height": 72,
+                  "fill": "$card",
+                  "cornerRadius": "$r-full",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "n4495",
+                      "name": "Icon",
+                      "width": 32,
+                      "height": 32,
+                      "icon": "sprout",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "mmON5",
+                  "name": "Heading",
+                  "fill": "$ink",
+                  "content": "No plants yet",
+                  "fontFamily": "$font-head",
+                  "fontSize": 22,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "XIeq0",
+                  "name": "Body",
+                  "fill": "$ink-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": 240,
+                  "content": "Add your first plant and we'll identify it, gather care notes, and remind you when to water.",
+                  "lineHeight": 1.5,
+                  "textAlign": "center",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "id": "a7xDe",
+                  "type": "ref",
+                  "ref": "VL49v",
+                  "name": "AddButton",
+                  "descendants": {
+                    "wFMPH": {
+                      "content": "Add a plant"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dRVBJ",
+          "type": "ref",
+          "ref": "anAUh",
+          "name": "TabBar",
+          "width": "fill_container",
+          "descendants": {
+            "ZCSpi": {
+              "fill": "$sage"
+            },
+            "hVOL5": {
+              "fill": "$accent"
+            },
+            "vkmMD": {
+              "fill": "$accent",
+              "fontWeight": "600"
+            },
+            "r0Bno": {
+              "fill": "#00000000"
+            },
+            "lanTI": {
+              "fill": "$ink-muted"
+            },
+            "N1xnd": {
+              "fill": "$ink-muted",
+              "fontWeight": "500"
+            },
+            "vtJCO": {
+              "fill": "#00000000"
+            },
+            "Z6xlM": {
+              "fill": "$ink-muted"
+            },
+            "l9jp9": {
+              "fill": "$ink-muted",
+              "fontWeight": "500"
+            },
+            "wqRVt": {
+              "fill": "#00000000"
+            },
+            "WAhzk": {
+              "fill": "$ink-muted"
+            },
+            "p8xGGw": {
+              "fill": "$ink-muted",
+              "fontWeight": "500"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "ueB7r",
+      "x": -2020,
+      "y": -3045,
+      "name": "03 Add Plant",
+      "clip": true,
+      "width": 390,
+      "height": 844,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "WncCU",
+          "type": "ref",
+          "ref": "aQNXu",
+          "name": "StatusBar",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "u9uPpn",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            6,
+            18,
+            24,
+            18
+          ],
+          "children": [
+            {
+              "id": "quLD5",
+              "type": "ref",
+              "ref": "qRluX",
+              "name": "Header",
+              "width": "fill_container",
+              "descendants": {
+                "G84rh": {
+                  "content": "Add a plant"
+                }
+              }
+            },
+            {
+              "type": "text",
+              "id": "UIkVN",
+              "name": "Sub",
+              "fill": "$ink-secondary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Start with a photo or a name. We'll identify it from a single trusted source.",
+              "lineHeight": 1.5,
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "kX1iH",
+              "name": "Take a photo",
+              "width": "fill_container",
+              "fill": "$card",
+              "cornerRadius": "$r-lg",
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#1B3A2814",
+                "offset": {
+                  "x": 0,
+                  "y": 4
+                },
+                "blur": 14
+              },
+              "gap": 14,
+              "padding": 18,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "VHtTr",
+                  "name": "IconWrap",
+                  "width": 48,
+                  "height": 48,
+                  "fill": "$sage-tint",
+                  "cornerRadius": "$r-md",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "Sbv2d",
+                      "name": "Icon",
+                      "width": 22,
+                      "height": 22,
+                      "icon": "camera",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Uw8qb",
+                  "name": "Text",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "FOLHr",
+                      "name": "T",
+                      "fill": "$ink",
+                      "content": "Take a photo",
+                      "fontFamily": "$font-head",
+                      "fontSize": 17,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Ur84Z",
+                      "name": "D",
+                      "fill": "$ink-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Point at the whole plant for the best match",
+                      "lineHeight": 1.4,
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "R9p86",
+                  "name": "Chevron",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "$ink-muted"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "pzPF9",
+              "name": "Enter the name",
+              "width": "fill_container",
+              "fill": "$card",
+              "cornerRadius": "$r-lg",
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#1B3A2814",
+                "offset": {
+                  "x": 0,
+                  "y": 4
+                },
+                "blur": 14
+              },
+              "gap": 14,
+              "padding": 18,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "i5TLj",
+                  "name": "IconWrap",
+                  "width": 48,
+                  "height": 48,
+                  "fill": "$sage-tint",
+                  "cornerRadius": "$r-md",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "t6j03P",
+                      "name": "Icon",
+                      "width": 22,
+                      "height": 22,
+                      "icon": "keyboard",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "PBzWY",
+                  "name": "Text",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DnDEZ",
+                      "name": "T",
+                      "fill": "$ink",
+                      "content": "Enter the name",
+                      "fontFamily": "$font-head",
+                      "fontSize": 17,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "vVRB7",
+                      "name": "D",
+                      "fill": "$ink-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Type a common or scientific name",
+                      "lineHeight": 1.4,
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "Epbt9",
+                  "name": "Chevron",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "$ink-muted"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "SsfUs",
+              "name": "SourceNote",
+              "width": "fill_container",
+              "fill": "$sage-tint",
+              "cornerRadius": "$r-md",
+              "gap": 8,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "Lv7X8",
+                  "name": "Icon",
+                  "width": 15,
+                  "height": 15,
+                  "icon": "book-open",
+                  "library": "lucide",
+                  "fill": "$accent"
+                },
+                {
+                  "type": "text",
+                  "id": "Z0qQS",
+                  "name": "Text",
+                  "fill": "$ink-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Identification and care notes come from Wikipedia & Wikispecies.",
+                  "lineHeight": 1.4,
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "PHLyA",
+          "type": "ref",
+          "ref": "anAUh",
+          "name": "TabBar",
+          "width": "fill_container",
+          "descendants": {
+            "ZCSpi": {
+              "fill": "#00000000"
+            },
+            "hVOL5": {
+              "fill": "$ink-muted"
+            },
+            "vkmMD": {
+              "fill": "$ink-muted",
+              "fontWeight": "500"
+            },
+            "r0Bno": {
+              "fill": "$sage"
+            },
+            "lanTI": {
+              "fill": "$accent"
+            },
+            "N1xnd": {
+              "fill": "$accent",
+              "fontWeight": "600"
+            },
+            "vtJCO": {
+              "fill": "#00000000"
+            },
+            "Z6xlM": {
+              "fill": "$ink-muted"
+            },
+            "l9jp9": {
+              "fill": "$ink-muted",
+              "fontWeight": "500"
+            },
+            "wqRVt": {
+              "fill": "#00000000"
+            },
+            "WAhzk": {
+              "fill": "$ink-muted"
+            },
+            "p8xGGw": {
+              "fill": "$ink-muted",
+              "fontWeight": "500"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "sD0NQ",
+      "x": -3200,
+      "y": -3200,
+      "name": "FactTile",
+      "reusable": true,
+      "width": 104,
+      "fill": "$sage-tint",
+      "cornerRadius": "$r-md",
+      "layout": "vertical",
+      "gap": 4,
+      "padding": 12,
+      "children": [
+        {
+          "type": "icon",
+          "id": "uMIWQ",
+          "name": "Icon",
+          "width": 16,
+          "height": 16,
+          "icon": "droplet",
+          "library": "lucide",
+          "fill": "$accent"
+        },
+        {
+          "type": "text",
+          "id": "YVcGd",
+          "name": "Label",
+          "fill": "$ink-muted",
+          "content": "Water",
+          "fontFamily": "$font-body",
+          "fontSize": 10,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "fZ1bb",
+          "name": "Value",
+          "fill": "$ink",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Every 7 days",
+          "lineHeight": 1.3,
+          "fontFamily": "$font-body",
+          "fontSize": 12,
+          "fontWeight": "500"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "WaW8R",
+      "x": -3200,
+      "y": -3000,
+      "name": "Toggle",
+      "reusable": true,
+      "width": 46,
+      "height": 28,
+      "fill": "$accent",
+      "cornerRadius": "$r-full",
+      "padding": 3,
+      "justifyContent": "end",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "ellipse",
+          "id": "I0EDcM",
+          "name": "Knob",
+          "fill": "$card",
+          "width": 22,
+          "height": 22
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "sptII",
+      "x": -3200,
+      "y": -2800,
+      "name": "SecondaryButton",
+      "reusable": true,
+      "fill": "#00000000",
+      "cornerRadius": "$r-full",
+      "stroke": "$sage",
+      "strokeWidth": 1.5,
+      "gap": 8,
+      "padding": [
+        13,
+        20
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "mNzOp",
+          "name": "Label",
+          "fill": "$accent",
+          "content": "Secondary",
+          "fontFamily": "$font-body",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "p3OxUN",
+      "x": -3200,
+      "y": -2600,
+      "name": "SourceRow",
+      "reusable": true,
+      "width": 354,
+      "fill": "$card",
+      "cornerRadius": "$r-md",
+      "gap": 10,
+      "padding": 14,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon",
+          "id": "x2ETCy",
+          "name": "Icon",
+          "width": 16,
+          "height": 16,
+          "icon": "book-open",
+          "library": "lucide",
+          "fill": "$accent"
+        },
+        {
+          "type": "frame",
+          "id": "z5Z31",
+          "name": "Text",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 1,
+          "children": [
+            {
+              "type": "text",
+              "id": "k7rJLp",
+              "name": "Title",
+              "fill": "$ink",
+              "content": "Wikipedia",
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "nzUj2",
+              "name": "Url",
+              "fill": "$ink-muted",
+              "content": "en.wikipedia.org",
+              "fontFamily": "$font-body",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "icon",
+          "id": "vDkh6",
+          "name": "Ext",
+          "width": 15,
+          "height": 15,
+          "icon": "arrow-up-right",
+          "library": "lucide",
+          "fill": "$ink-muted"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "d9Wlt",
+      "x": -1490,
+      "y": -3045,
+      "name": "04 Identify Plant",
+      "clip": true,
+      "width": 390,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "y46Rr",
+          "type": "ref",
+          "ref": "aQNXu",
+          "name": "StatusBar",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "yjmCs",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            6,
+            18,
+            24,
+            18
+          ],
+          "children": [
+            {
+              "id": "zYZW8",
+              "type": "ref",
+              "ref": "qRluX",
+              "name": "Header",
+              "width": "fill_container",
+              "descendants": {
+                "G84rh": {
+                  "content": "Is this your plant?"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "XrDGZ",
+              "name": "YourPhoto",
+              "metadata": {
+                "type": "unsplash",
+                "username": "jtownsend22",
+                "link": "https://unsplash.com/@jtownsend22",
+                "author": "Jacob Townsend"
+              },
+              "clip": true,
+              "width": "fill_container",
+              "height": 190,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1646596579516-d97e9550d7d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODkwMjg5Mzh8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              },
+              "cornerRadius": "$r-lg"
+            },
+            {
+              "type": "frame",
+              "id": "vTnb2",
+              "name": "MatchCard",
+              "width": "fill_container",
+              "fill": "$card",
+              "cornerRadius": "$r-lg",
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#1B3A2814",
+                "offset": {
+                  "x": 0,
+                  "y": 4
+                },
+                "blur": 14
+              },
+              "layout": "vertical",
+              "gap": 10,
+              "padding": 18,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "wWGsw",
+                  "name": "Badges",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "TiB3J",
+                      "name": "SourceBadge",
+                      "fill": "$sage-tint",
+                      "cornerRadius": "$r-full",
+                      "gap": 5,
+                      "padding": [
+                        5,
+                        10
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "DMoaA",
+                          "name": "Icon",
+                          "width": 12,
+                          "height": 12,
+                          "icon": "book-open",
+                          "library": "lucide",
+                          "fill": "$accent"
+                        },
+                        {
+                          "type": "text",
+                          "id": "opwFi",
+                          "name": "Text",
+                          "fill": "$accent",
+                          "content": "Wikipedia",
+                          "fontFamily": "$font-body",
+                          "fontSize": 11,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "t1K1ob",
+                      "name": "ConfBadge",
+                      "fill": "$water-tint",
+                      "cornerRadius": "$r-full",
+                      "gap": 5,
+                      "padding": [
+                        5,
+                        10
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "zGpur",
+                          "name": "Text",
+                          "fill": "$water",
+                          "content": "94% match",
+                          "fontFamily": "$font-data",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "TvfKv",
+                  "name": "Sci",
+                  "fill": "$ink",
+                  "content": "Monstera deliciosa",
+                  "fontFamily": "$font-head",
+                  "fontSize": 23,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "hkY90",
+                  "name": "Common",
+                  "fill": "$ink-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Swiss cheese plant · Split-leaf philodendron",
+                  "lineHeight": 1.4,
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "OuDNM",
+                  "name": "Desc",
+                  "fill": "$ink-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "A tropical climbing evergreen native to the rainforests of southern Mexico and Central America, grown worldwide as a houseplant.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fKQTz",
+              "name": "Actions",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "id": "ad5Z0",
+                  "type": "ref",
+                  "ref": "VL49v",
+                  "name": "Confirm",
+                  "width": "fill_container",
+                  "descendants": {
+                    "wFMPH": {
+                      "content": "Yes, that's it"
+                    }
+                  }
+                },
+                {
+                  "id": "bF5xq",
+                  "type": "ref",
+                  "ref": "sptII",
+                  "name": "Retry",
+                  "width": "fill_container",
+                  "descendants": {
+                    "mNzOp": {
+                      "content": "Try a different match"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CYpaK",
+          "type": "ref",
+          "ref": "anAUh",
+          "name": "TabBar",
+          "width": "fill_container",
+          "descendants": {
+            "ZCSpi": {
+              "fill": "#00000000"
+            },
+            "hVOL5": {
+              "fill": "$ink-muted"
+            },
+            "vkmMD": {
+              "fill": "$ink-muted",
+              "fontWeight": "500"
+            },
+            "r0Bno": {
+              "fill": "$sage"
+            },
+            "lanTI": {
+              "fill": "$accent"
+            },
+            "N1xnd": {
+              "fill": "$accent",
+              "fontWeight": "600"
+            },
+            "vtJCO": {
+              "fill": "#00000000"
+            },
+            "Z6xlM": {
+              "fill": "$ink-muted"
+            },
+            "l9jp9": {
+              "fill": "$ink-muted",
+              "fontWeight": "500"
+            },
+            "wqRVt": {
+              "fill": "#00000000"
+            },
+            "WAhzk": {
+              "fill": "$ink-muted"
+            },
+            "p8xGGw": {
+              "fill": "$ink-muted",
+              "fontWeight": "500"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "bNaZO",
+      "x": -960,
+      "y": -3045,
+      "name": "05 Plant About",
+      "width": 390,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "oMWkc",
+          "type": "ref",
+          "ref": "aQNXu",
+          "name": "StatusBar",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "z2e9R",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 22,
+          "padding": [
+            6,
+            18,
+            28,
+            18
+          ],
+          "children": [
+            {
+              "id": "IFuOF",
+              "type": "ref",
+              "ref": "qRluX",
+              "name": "Header",
+              "width": "fill_container",
+              "descendants": {
+                "G84rh": {
+                  "content": "About this plant"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "eAnFa",
+              "name": "Hero",
+              "width": "fill_container",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "D9XoV",
+                  "type": "ref",
+                  "ref": "z0L6z",
+                  "name": "Avatar",
+                  "width": 76,
+                  "height": 76
+                },
+                {
+                  "type": "frame",
+                  "id": "UCLlD",
+                  "name": "Names",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GmmNb",
+                      "name": "Sci",
+                      "fill": "$ink",
+                      "content": "Monstera deliciosa",
+                      "fontFamily": "$font-head",
+                      "fontSize": 21,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "fdmD0",
+                      "name": "Common",
+                      "fill": "$ink-muted",
+                      "content": "Swiss cheese plant",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fCBmt",
+              "name": "Facts",
+              "width": "fill_container",
+              "gap": 10,
+              "children": [
+                {
+                  "id": "s3YbP2",
+                  "type": "ref",
+                  "ref": "sD0NQ",
+                  "name": "Water",
+                  "width": "fill_container",
+                  "descendants": {
+                    "uMIWQ": {
+                      "icon": "droplet"
+                    },
+                    "YVcGd": {
+                      "content": "Water"
+                    },
+                    "fZ1bb": {
+                      "content": "Every 7 days"
+                    }
+                  }
+                },
+                {
+                  "id": "agXA5",
+                  "type": "ref",
+                  "ref": "sD0NQ",
+                  "name": "Light",
+                  "width": "fill_container",
+                  "descendants": {
+                    "uMIWQ": {
+                      "icon": "sun"
+                    },
+                    "YVcGd": {
+                      "content": "Light"
+                    },
+                    "fZ1bb": {
+                      "content": "Bright indirect"
+                    }
+                  }
+                },
+                {
+                  "id": "Yz5j2",
+                  "type": "ref",
+                  "ref": "sD0NQ",
+                  "name": "Origin",
+                  "width": "fill_container",
+                  "descendants": {
+                    "uMIWQ": {
+                      "icon": "globe"
+                    },
+                    "YVcGd": {
+                      "content": "Origin"
+                    },
+                    "fZ1bb": {
+                      "content": "S. Mexico"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "prbNo",
+              "name": "Section Origin",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "V4PcZW",
+                  "name": "H",
+                  "fill": "$ink-secondary",
+                  "content": "Origin",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "Y8Qju",
+                  "name": "Body",
+                  "fill": "$ink",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Native to the tropical rainforests of southern Mexico and Central America, where it climbs tree trunks using aerial roots and can reach 20 m in height.",
+                  "lineHeight": 1.55,
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "yfraz",
+              "name": "Section Good to know",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "TYu3J",
+                  "name": "H",
+                  "fill": "$ink-secondary",
+                  "content": "Good to know",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "aLrxi",
+                  "name": "Bullet",
+                  "width": "fill_container",
+                  "gap": 9,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "RbqEE",
+                      "name": "Dot",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "leaf",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    },
+                    {
+                      "type": "text",
+                      "id": "i2NRV",
+                      "name": "T",
+                      "fill": "$ink",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The name deliciosa refers to its edible fruit, which tastes like a blend of pineapple and banana when fully ripe.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Py8r0",
+                  "name": "Bullet",
+                  "width": "fill_container",
+                  "gap": 9,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "UAejv",
+                      "name": "Dot",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "leaf",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    },
+                    {
+                      "type": "text",
+                      "id": "EUFyj",
+                      "name": "T",
+                      "fill": "$ink",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Leaf holes, called fenestrations, are thought to help the plant withstand strong winds and let light reach lower leaves.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "f4Ydg",
+                  "name": "Bullet",
+                  "width": "fill_container",
+                  "gap": 9,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "sPlQi",
+                      "name": "Dot",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "leaf",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    },
+                    {
+                      "type": "text",
+                      "id": "nKTnW",
+                      "name": "T",
+                      "fill": "$ink",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Unripe fruit contains oxalic acid and is an irritant, so it must be eaten only when fully mature.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "gJWEK",
+              "name": "Section Sources",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "OPmyf",
+                  "name": "H",
+                  "fill": "$ink-secondary",
+                  "content": "Sources",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "id": "iAtfZ",
+                  "type": "ref",
+                  "ref": "p3OxUN",
+                  "name": "Wikipedia — Monstera deliciosa",
+                  "width": "fill_container",
+                  "descendants": {
+                    "k7rJLp": {
+                      "content": "Wikipedia — Monstera deliciosa"
+                    },
+                    "nzUj2": {
+                      "content": "en.wikipedia.org"
+                    }
+                  }
+                },
+                {
+                  "id": "Hrqv7",
+                  "type": "ref",
+                  "ref": "p3OxUN",
+                  "name": "Wikispecies",
+                  "width": "fill_container",
+                  "descendants": {
+                    "k7rJLp": {
+                      "content": "Wikispecies"
+                    },
+                    "nzUj2": {
+                      "content": "species.wikimedia.org"
+                    }
+                  }
+                },
+                {
+                  "id": "htqlA",
+                  "type": "ref",
+                  "ref": "p3OxUN",
+                  "name": "Royal Horticultural Society",
+                  "width": "fill_container",
+                  "descendants": {
+                    "k7rJLp": {
+                      "content": "Royal Horticultural Society"
+                    },
+                    "nzUj2": {
+                      "content": "rhs.org.uk"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "YKhzd",
+              "type": "ref",
+              "ref": "VL49v",
+              "name": "AddBtn",
+              "width": "fill_container",
+              "descendants": {
+                "wFMPH": {
+                  "content": "Add to my plants"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Yr3Pc",
+      "x": -430,
+      "y": -3045,
+      "name": "06 Plant Detail",
+      "width": 390,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "fu3tj",
+          "type": "ref",
+          "ref": "aQNXu",
+          "name": "StatusBar",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "LvSln",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            6,
+            18,
+            28,
+            18
+          ],
+          "children": [
+            {
+              "id": "UrwAd",
+              "type": "ref",
+              "ref": "qRluX",
+              "name": "Header",
+              "width": "fill_container",
+              "descendants": {
+                "G84rh": {
+                  "content": "Monstera"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "xY5SA",
+              "name": "HeroCard",
+              "width": "fill_container",
+              "fill": "$card",
+              "cornerRadius": "$r-lg",
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#1B3A2814",
+                "offset": {
+                  "x": 0,
+                  "y": 4
+                },
+                "blur": 14
+              },
+              "layout": "vertical",
+              "gap": 16,
+              "padding": 18,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Y60vAV",
+                  "name": "Top",
+                  "width": "fill_container",
+                  "gap": 14,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "TPtb2",
+                      "type": "ref",
+                      "ref": "z0L6z",
+                      "name": "Avatar",
+                      "width": 60,
+                      "height": 60
+                    },
+                    {
+                      "type": "frame",
+                      "id": "s417ek",
+                      "name": "Names",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 3,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "g02idC",
+                          "name": "Name",
+                          "fill": "$ink",
+                          "content": "Monstera",
+                          "fontFamily": "$font-head",
+                          "fontSize": 20,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "bWsZN",
+                          "name": "Meta",
+                          "fill": "$ink-muted",
+                          "content": "Monstera deliciosa · added Aug 12",
+                          "fontFamily": "$font-body",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MMJpy",
+                  "name": "Progress",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 7,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "beM8x",
+                      "name": "Labels",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "TqZUy",
+                          "name": "L",
+                          "fill": "$ink-muted",
+                          "content": "Last watered Sep 3",
+                          "fontFamily": "$font-body",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "XvXdE",
+                          "name": "R",
+                          "fill": "$ink-muted",
+                          "content": "Next Sep 12",
+                          "fontFamily": "$font-body",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "yGNHN",
+                      "name": "Track",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 8,
+                      "fill": "$sage-tint",
+                      "cornerRadius": "$r-full",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "h2zu3",
+                          "name": "Fill",
+                          "width": 214,
+                          "height": 8,
+                          "fill": "$water",
+                          "cornerRadius": "$r-full"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "Gwchn",
+                      "name": "Countdown",
+                      "fill": "$accent",
+                      "content": "Water in 2 days",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "PjQQN",
+              "type": "ref",
+              "ref": "VL49v",
+              "name": "WaterBtn",
+              "width": "fill_container",
+              "descendants": {
+                "wFMPH": {
+                  "content": "I watered this today"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "i4tG0",
+              "name": "Facts",
+              "width": "fill_container",
+              "gap": 10,
+              "children": [
+                {
+                  "id": "wG2PQ",
+                  "type": "ref",
+                  "ref": "sD0NQ",
+                  "name": "Water",
+                  "width": "fill_container",
+                  "descendants": {
+                    "uMIWQ": {
+                      "icon": "droplet"
+                    },
+                    "YVcGd": {
+                      "content": "Water"
+                    },
+                    "fZ1bb": {
+                      "content": "Every 7 days"
+                    }
+                  }
+                },
+                {
+                  "id": "UKowk",
+                  "type": "ref",
+                  "ref": "sD0NQ",
+                  "name": "Light",
+                  "width": "fill_container",
+                  "descendants": {
+                    "uMIWQ": {
+                      "icon": "sun"
+                    },
+                    "YVcGd": {
+                      "content": "Light"
+                    },
+                    "fZ1bb": {
+                      "content": "Bright indirect"
+                    }
+                  }
+                },
+                {
+                  "id": "TSusn",
+                  "type": "ref",
+                  "ref": "sD0NQ",
+                  "name": "Ideal temp",
+                  "width": "fill_container",
+                  "descendants": {
+                    "uMIWQ": {
+                      "icon": "thermometer"
+                    },
+                    "YVcGd": {
+                      "content": "Ideal temp"
+                    },
+                    "fZ1bb": {
+                      "content": "18–27°C"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YZfu3",
+              "name": "Section History",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "pyh55",
+                  "name": "H",
+                  "fill": "$ink-secondary",
+                  "content": "Watering history",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "rPcMC",
+                  "name": "List",
+                  "clip": true,
+                  "width": "fill_container",
+                  "cornerRadius": "$r-md",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "z5YQP",
+                      "name": "Sep 3",
+                      "width": "fill_container",
+                      "fill": "$card",
+                      "gap": 10,
+                      "padding": [
+                        12,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "xfGx7",
+                          "name": "Icon",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "droplet",
+                          "library": "lucide",
+                          "fill": "$water"
+                        },
+                        {
+                          "type": "text",
+                          "id": "pZ0py",
+                          "name": "Date",
+                          "fill": "$ink",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Sep 3",
+                          "fontFamily": "$font-data",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "EOQil",
+                          "name": "Rel",
+                          "fill": "$ink-muted",
+                          "content": "1 week ago",
+                          "fontFamily": "$font-body",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ubC2l",
+                      "name": "Aug 27",
+                      "width": "fill_container",
+                      "fill": "$card",
+                      "gap": 10,
+                      "padding": [
+                        12,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "tV8JE",
+                          "name": "Icon",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "droplet",
+                          "library": "lucide",
+                          "fill": "$water"
+                        },
+                        {
+                          "type": "text",
+                          "id": "GtdRI",
+                          "name": "Date",
+                          "fill": "$ink",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Aug 27",
+                          "fontFamily": "$font-data",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "d6kAF0",
+                          "name": "Rel",
+                          "fill": "$ink-muted",
+                          "content": "2 weeks ago",
+                          "fontFamily": "$font-body",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ODZU5",
+                      "name": "Aug 20",
+                      "width": "fill_container",
+                      "fill": "$card",
+                      "gap": 10,
+                      "padding": [
+                        12,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "nZ19Z",
+                          "name": "Icon",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "droplet",
+                          "library": "lucide",
+                          "fill": "$water"
+                        },
+                        {
+                          "type": "text",
+                          "id": "CDEPj",
+                          "name": "Date",
+                          "fill": "$ink",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Aug 20",
+                          "fontFamily": "$font-data",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "BePAH",
+                          "name": "Rel",
+                          "fill": "$ink-muted",
+                          "content": "3 weeks ago",
+                          "fontFamily": "$font-body",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "g96C6",
+                      "name": "Aug 12",
+                      "width": "fill_container",
+                      "fill": "$card",
+                      "gap": 10,
+                      "padding": [
+                        12,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "oFF9B",
+                          "name": "Icon",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "sprout",
+                          "library": "lucide",
+                          "fill": "$accent"
+                        },
+                        {
+                          "type": "text",
+                          "id": "V5TQI",
+                          "name": "Date",
+                          "fill": "$ink",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Aug 12",
+                          "fontFamily": "$font-data",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "CL5JM",
+                          "name": "Rel",
+                          "fill": "$ink-muted",
+                          "content": "Added",
+                          "fontFamily": "$font-body",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bhTEN",
+              "name": "AboutLink",
+              "width": "fill_container",
+              "fill": "$card",
+              "cornerRadius": "$r-md",
+              "gap": 10,
+              "padding": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "GFp0k",
+                  "name": "Icon",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "info",
+                  "library": "lucide",
+                  "fill": "$accent"
+                },
+                {
+                  "type": "text",
+                  "id": "DCwM9",
+                  "name": "T",
+                  "fill": "$ink",
+                  "content": "About this plant",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "icon",
+                  "id": "B0CDA",
+                  "name": "Chev",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "$ink-muted"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Il9Qq",
+      "x": 100,
+      "y": -3045,
+      "name": "07 Log Watering",
+      "width": 390,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "W8LXMA",
+          "type": "ref",
+          "ref": "aQNXu",
+          "name": "StatusBar",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "Mporq",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            6,
+            18,
+            28,
+            18
+          ],
+          "children": [
+            {
+              "id": "k25JJU",
+              "type": "ref",
+              "ref": "qRluX",
+              "name": "Header",
+              "width": "fill_container",
+              "descendants": {
+                "G84rh": {
+                  "content": "Water check"
+                }
+              }
+            },
+            {
+              "type": "text",
+              "id": "HTuFD",
+              "name": "Sub",
+              "fill": "$ink-secondary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "We've pre-selected the plants due today. Tap to adjust, then log them all at once.",
+              "lineHeight": 1.5,
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "Vr1Eq",
+              "name": "List",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "q1TiR",
+                  "name": "Monstera",
+                  "width": "fill_container",
+                  "fill": "$card",
+                  "cornerRadius": "$r-md",
+                  "gap": 12,
+                  "padding": 14,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "ASPrE",
+                      "type": "ref",
+                      "ref": "z0L6z",
+                      "name": "Avatar",
+                      "width": 40,
+                      "height": 40
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wGMNh",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "LXwkx",
+                          "name": "Name",
+                          "fill": "$ink",
+                          "content": "Monstera",
+                          "fontFamily": "$font-head",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "m42W0",
+                          "name": "Due",
+                          "fill": "$ink-muted",
+                          "content": "Due today",
+                          "fontFamily": "$font-body",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "r8lQIu",
+                      "name": "Check",
+                      "width": 24,
+                      "height": 24,
+                      "fill": "$accent",
+                      "cornerRadius": "$r-full",
+                      "stroke": "#00000000",
+                      "strokeWidth": 1.5,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "HCqee",
+                          "name": "Tick",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "check",
+                          "library": "lucide",
+                          "fill": "$on-inverse"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xiZ3Z",
+                  "name": "Golden Pothos",
+                  "width": "fill_container",
+                  "fill": "$card",
+                  "cornerRadius": "$r-md",
+                  "gap": 12,
+                  "padding": 14,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "KUFRg",
+                      "type": "ref",
+                      "ref": "I0dsj",
+                      "name": "Avatar",
+                      "width": 40,
+                      "height": 40
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Uj5U4",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "W1j5o9",
+                          "name": "Name",
+                          "fill": "$ink",
+                          "content": "Golden Pothos",
+                          "fontFamily": "$font-head",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "J3oFX",
+                          "name": "Due",
+                          "fill": "$warn",
+                          "content": "2 days overdue",
+                          "fontFamily": "$font-body",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n0UDzL",
+                      "name": "Check",
+                      "width": 24,
+                      "height": 24,
+                      "fill": "$accent",
+                      "cornerRadius": "$r-full",
+                      "stroke": "#00000000",
+                      "strokeWidth": 1.5,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "rnaYV",
+                          "name": "Tick",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "check",
+                          "library": "lucide",
+                          "fill": "$on-inverse"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "piney",
+                  "name": "Fiddle Leaf Fig",
+                  "width": "fill_container",
+                  "fill": "$card",
+                  "cornerRadius": "$r-md",
+                  "gap": 12,
+                  "padding": 14,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "oj4cH",
+                      "type": "ref",
+                      "ref": "c66dyU",
+                      "name": "Avatar",
+                      "width": 40,
+                      "height": 40
+                    },
+                    {
+                      "type": "frame",
+                      "id": "FvkHQ",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Q2YO5H",
+                          "name": "Name",
+                          "fill": "$ink",
+                          "content": "Fiddle Leaf Fig",
+                          "fontFamily": "$font-head",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "yk1Ne",
+                          "name": "Due",
+                          "fill": "$ink-muted",
+                          "content": "Due in 2 days",
+                          "fontFamily": "$font-body",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "R7waqk",
+                      "name": "Check",
+                      "width": 24,
+                      "height": 24,
+                      "fill": "#00000000",
+                      "cornerRadius": "$r-full",
+                      "stroke": "$ink-muted",
+                      "strokeWidth": 1.5,
+                      "justifyContent": "center",
+                      "alignItems": "center"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "AcIW2",
+                  "name": "Snake Plant",
+                  "width": "fill_container",
+                  "fill": "$card",
+                  "cornerRadius": "$r-md",
+                  "gap": 12,
+                  "padding": 14,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "AjEFA",
+                      "type": "ref",
+                      "ref": "YFwtO",
+                      "name": "Avatar",
+                      "width": 40,
+                      "height": 40
+                    },
+                    {
+                      "type": "frame",
+                      "id": "O8ujI",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "H3sfkL",
+                          "name": "Name",
+                          "fill": "$ink",
+                          "content": "Snake Plant",
+                          "fontFamily": "$font-head",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "PFdhm",
+                          "name": "Due",
+                          "fill": "$ink-muted",
+                          "content": "Due in 5 days",
+                          "fontFamily": "$font-body",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "l8M9Od",
+                      "name": "Check",
+                      "width": 24,
+                      "height": 24,
+                      "fill": "#00000000",
+                      "cornerRadius": "$r-full",
+                      "stroke": "$ink-muted",
+                      "strokeWidth": 1.5,
+                      "justifyContent": "center",
+                      "alignItems": "center"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "i85om",
+              "type": "ref",
+              "ref": "VL49v",
+              "name": "LogBtn",
+              "width": "fill_container",
+              "descendants": {
+                "wFMPH": {
+                  "content": "Log 2 waterings"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "pzJU3",
+      "x": 630,
+      "y": -3045,
+      "name": "08 Watered Confirmation",
+      "clip": true,
+      "width": 390,
+      "height": 844,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "FhY5q",
+          "type": "ref",
+          "ref": "aQNXu",
+          "name": "StatusBar",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "U40XC",
+          "name": "Content",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            6,
+            28,
+            28,
+            28
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Fn0Ym",
+              "name": "CheckCircle",
+              "width": 84,
+              "height": 84,
+              "fill": "$accent",
+              "cornerRadius": "$r-full",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "ms2kQ",
+                  "name": "Check",
+                  "width": 40,
+                  "height": 40,
+                  "icon": "check",
+                  "library": "lucide",
+                  "fill": "$on-inverse"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "y8ohsP",
+              "name": "Title",
+              "fill": "$ink",
+              "content": "Nice work!",
+              "fontFamily": "$font-head",
+              "fontSize": 26,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "X3KMaX",
+              "name": "Body",
+              "fill": "$ink-secondary",
+              "textGrowth": "fixed-width",
+              "width": 270,
+              "content": "Monstera and Golden Pothos are watered. We'll nudge you again in about a week — sooner if you forget.",
+              "lineHeight": 1.55,
+              "textAlign": "center",
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "VXiXV",
+              "name": "NextCard",
+              "width": "fill_container",
+              "fill": "$sage-tint",
+              "cornerRadius": "$r-md",
+              "gap": 10,
+              "padding": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "fGMRt",
+                  "name": "Icon",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "calendar-clock",
+                  "library": "lucide",
+                  "fill": "$accent"
+                },
+                {
+                  "type": "text",
+                  "id": "SpEy9",
+                  "name": "T",
+                  "fill": "$ink-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Next up: Fiddle Leaf Fig in 2 days",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "id": "Drpvy",
+              "type": "ref",
+              "ref": "VL49v",
+              "name": "DoneBtn",
+              "width": "fill_container",
+              "descendants": {
+                "wFMPH": {
+                  "content": "Back to my plants"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "cos3d",
+      "x": 1160,
+      "y": -3045,
+      "name": "09 Settings",
+      "width": 390,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "ZxorX",
+          "type": "ref",
+          "ref": "aQNXu",
+          "name": "StatusBar",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "WCn3N",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 22,
+          "padding": [
+            6,
+            18,
+            28,
+            18
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "u7b6r",
+              "name": "Title",
+              "fill": "$ink",
+              "content": "Settings",
+              "fontFamily": "$font-head",
+              "fontSize": 26,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "Rftde",
+              "name": "Section Reminders",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "fl8yB",
+                  "name": "H",
+                  "fill": "$ink-secondary",
+                  "content": "Reminders",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "Dd4Xe",
+                  "name": "Group",
+                  "clip": true,
+                  "width": "fill_container",
+                  "cornerRadius": "$r-md",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "A5ka2O",
+                      "name": "Email reminders",
+                      "width": "fill_container",
+                      "fill": "$card",
+                      "gap": 12,
+                      "padding": 14,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "zlY7N",
+                          "name": "Text",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "rAYQO",
+                              "name": "N",
+                              "fill": "$ink",
+                              "content": "Email reminders",
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "YDk28",
+                              "name": "S",
+                              "fill": "$ink-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Get an email on the morning a plant is due",
+                              "lineHeight": 1.4,
+                              "fontFamily": "$font-body",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "zopAp",
+                          "type": "ref",
+                          "ref": "WaW8R",
+                          "name": "Toggle"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "L7REh",
+                      "name": "Evening nudge",
+                      "width": "fill_container",
+                      "fill": "$card",
+                      "gap": 12,
+                      "padding": 14,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "j5lf7W",
+                          "name": "Text",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "E1Mbu",
+                              "name": "N",
+                              "fill": "$ink",
+                              "content": "Evening nudge",
+                              "fontFamily": "$font-body",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "E9YVYn",
+                              "name": "S",
+                              "fill": "$ink-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "If plants are still unwatered, we email you at 7:00 PM",
+                              "lineHeight": 1.4,
+                              "fontFamily": "$font-body",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "XHJQ7",
+                          "type": "ref",
+                          "ref": "WaW8R",
+                          "name": "Toggle"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "TkwYE",
+              "name": "Section Delivery",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gpXTv",
+                  "name": "H",
+                  "fill": "$ink-secondary",
+                  "content": "Delivery",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "s1M3Bh",
+                  "name": "Group",
+                  "clip": true,
+                  "width": "fill_container",
+                  "cornerRadius": "$r-md",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "APSBp",
+                      "name": "Email address",
+                      "width": "fill_container",
+                      "fill": "$card",
+                      "gap": 10,
+                      "padding": 14,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "QyWUG",
+                          "name": "N",
+                          "fill": "$ink",
+                          "content": "Email address",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "tX4XK",
+                          "name": "V",
+                          "fill": "$ink-muted",
+                          "content": "cocchialorenzo@gmail.com",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "icon",
+                          "id": "MFiNM",
+                          "name": "Chev",
+                          "width": 16,
+                          "height": 16,
+                          "icon": "chevron-right",
+                          "library": "lucide",
+                          "fill": "$ink-muted"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "RPJJY",
+                      "name": "Nudge time",
+                      "width": "fill_container",
+                      "fill": "$card",
+                      "gap": 10,
+                      "padding": 14,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "BW1NZ",
+                          "name": "N",
+                          "fill": "$ink",
+                          "content": "Nudge time",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "sjH1m",
+                          "name": "V",
+                          "fill": "$ink-muted",
+                          "content": "7:00 PM",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "icon",
+                          "id": "GHc7h",
+                          "name": "Chev",
+                          "width": 16,
+                          "height": 16,
+                          "icon": "chevron-right",
+                          "library": "lucide",
+                          "fill": "$ink-muted"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "hfNDg",
+              "name": "Section Sources",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wwTDf",
+                  "name": "H",
+                  "fill": "$ink-secondary",
+                  "content": "Sources",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "DfhDq",
+                  "name": "Group",
+                  "clip": true,
+                  "width": "fill_container",
+                  "cornerRadius": "$r-md",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "fQfzq",
+                      "name": "Plant data",
+                      "width": "fill_container",
+                      "fill": "$card",
+                      "gap": 10,
+                      "padding": 14,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "hvSfL",
+                          "name": "N",
+                          "fill": "$ink",
+                          "content": "Plant identification & care",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "SWe6C",
+                          "name": "V",
+                          "fill": "$ink-muted",
+                          "content": "Wikipedia · Wikispecies",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "O7eV6i",
+          "type": "ref",
+          "ref": "anAUh",
+          "name": "TabBar",
+          "width": "fill_container",
+          "descendants": {
+            "ZCSpi": {
+              "fill": "#00000000"
+            },
+            "hVOL5": {
+              "fill": "$ink-muted"
+            },
+            "vkmMD": {
+              "fill": "$ink-muted",
+              "fontWeight": "500"
+            },
+            "r0Bno": {
+              "fill": "#00000000"
+            },
+            "lanTI": {
+              "fill": "$ink-muted"
+            },
+            "N1xnd": {
+              "fill": "$ink-muted",
+              "fontWeight": "500"
+            },
+            "vtJCO": {
+              "fill": "#00000000"
+            },
+            "Z6xlM": {
+              "fill": "$ink-muted"
+            },
+            "l9jp9": {
+              "fill": "$ink-muted",
+              "fontWeight": "500"
+            },
+            "wqRVt": {
+              "fill": "$sage"
+            },
+            "WAhzk": {
+              "fill": "$accent"
+            },
+            "p8xGGw": {
+              "fill": "$accent",
+              "fontWeight": "600"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg": {
+      "type": "color",
+      "value": "#EEF2E9"
+    },
+    "card": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "sage": {
+      "type": "color",
+      "value": "#C8DBBC"
+    },
+    "sage-tint": {
+      "type": "color",
+      "value": "#DDE8D2"
+    },
+    "ink": {
+      "type": "color",
+      "value": "#1B3A28"
+    },
+    "ink-secondary": {
+      "type": "color",
+      "value": "#4A6B52"
+    },
+    "ink-muted": {
+      "type": "color",
+      "value": "#7A9A80"
+    },
+    "accent": {
+      "type": "color",
+      "value": "#2D5E3A"
+    },
+    "inverse": {
+      "type": "color",
+      "value": "#1B3A28"
+    },
+    "on-inverse": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "water": {
+      "type": "color",
+      "value": "#3E7CA8"
+    },
+    "water-tint": {
+      "type": "color",
+      "value": "#DCEAF2"
+    },
+    "warn": {
+      "type": "color",
+      "value": "#BE6A3C"
+    },
+    "warn-tint": {
+      "type": "color",
+      "value": "#F3E1D4"
+    },
+    "font-head": {
+      "type": "string",
+      "value": "Newsreader"
+    },
+    "font-body": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "font-data": {
+      "type": "string",
+      "value": "Geist Mono"
+    },
+    "r-sm": {
+      "type": "number",
+      "value": 8
+    },
+    "r-md": {
+      "type": "number",
+      "value": 12
+    },
+    "r-lg": {
+      "type": "number",
+      "value": 16
+    },
+    "r-full": {
+      "type": "number",
+      "value": 9999
+    }
+  },
+  "fileToken": "2e561a61-c0ef-40a5-8786-4722a8b66bc6"
+}

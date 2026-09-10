@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#DDE8D2"/>
+  <g transform="translate(256 268)">
+    <!-- pot -->
+    <path d="M-92 96 L92 96 L74 190 A24 24 0 0 1 50 210 L-50 210 A24 24 0 0 1 -74 190 Z" fill="#2D5E3A"/>
+    <rect x="-104" y="70" width="208" height="34" rx="17" fill="#1B3A28"/>
+    <!-- stem -->
+    <path d="M0 76 C-6 10 -6 -40 0 -104" stroke="#2D5E3A" stroke-width="14" fill="none" stroke-linecap="round"/>
+    <!-- leaves -->
+    <path d="M0 -40 C-70 -50 -120 -110 -110 -170 C-46 -168 4 -120 0 -40 Z" fill="#2D5E3A"/>
+    <path d="M0 -40 C70 -50 120 -110 110 -170 C46 -168 -4 -120 0 -40 Z" fill="#3C7A4B"/>
+    <path d="M0 -70 C-30 -150 0 -210 0 -240 C0 -210 30 -150 0 -70 Z" fill="#2D5E3A"/>
+    <!-- water drop -->
+    <path d="M150 -140 C150 -112 128 -96 108 -96 C88 -96 66 -112 66 -140 C66 -168 108 -206 108 -206 C108 -206 150 -168 150 -140 Z" fill="#3E7CA8"/>
+  </g>
+</svg>

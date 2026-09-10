@@ -1,0 +1,82 @@
+.btn {
+  border: none;
+  border-radius: var(--r-full);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 15px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn--primary {
+  background: var(--accent);
+  color: var(--on-inverse);
+}
+.btn--secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--sage);
+  padding: 13px 20px;
+  font-size: 14px;
+}
+
+.toggle {
+  width: 46px;
+  height: 28px;
+  border-radius: var(--r-full);
+  background: var(--sage);
+  border: none;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: background 0.15s ease;
+  flex-shrink: 0;
+}
+.toggle--on {
+  background: var(--accent);
+  justify-content: flex-end;
+}
+.toggle__knob {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--r-full);
+  background: var(--card);
+  display: block;
+}
+
+.avatar {
+  border-radius: var(--r-full);
+  object-fit: cover;
+  background: var(--sage-tint);
+  flex-shrink: 0;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: var(--r-full);
+  font-size: 11px;
+  font-weight: 600;
+}
+.chip--sage {
+  background: var(--sage-tint);
+  color: var(--accent);
+}
+.chip--water {
+  background: var(--water-tint);
+  color: var(--water);
+}
+.chip--warn {
+  background: var(--warn-tint);
+  color: var(--warn);
+}

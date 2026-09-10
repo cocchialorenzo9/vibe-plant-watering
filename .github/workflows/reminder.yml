@@ -1,0 +1,51 @@
+name: Evening watering reminder
+
+on:
+  schedule:
+    # 17:00 and 18:00 UTC cover 19:00 Europe/Berlin across CET and CEST.
+    # The script re-checks the Berlin wall-clock and only the 19:00 run acts.
+    - cron: "0 17 * * *"
+    - cron: "0 18 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Print the email instead of sending"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24 # unflagged TypeScript type-stripping for the domain imports
+
+      - name: Gate to 19:00 Europe/Berlin
+        id: gate
+        run: |
+          HOUR=$(TZ=Europe/Berlin date +%H)
+          echo "Berlin hour: $HOUR"
+          if [ "$HOUR" = "19" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Send reminder
+        if: steps.gate.outputs.run == 'true'
+        run: node scripts/send-reminder.mjs
+        env:
+          DATA_TOKEN: ${{ secrets.DATA_TOKEN }}
+          DATA_OWNER: ${{ secrets.DATA_OWNER }}
+          DATA_REPO: ${{ secrets.DATA_REPO }}
+          DATA_PATH: ${{ vars.DATA_PATH || 'watering.json' }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          REMINDER_TO: ${{ secrets.REMINDER_TO }}
+          REMINDER_FROM: ${{ vars.REMINDER_FROM || 'Plant Watering <onboarding@resend.dev>' }}
+          APP_URL: ${{ vars.APP_URL }}
+          DRY_RUN: ${{ (github.event_name == 'workflow_dispatch' && inputs.dry_run) && '1' || '' }}

@@ -1,0 +1,18 @@
+{
+  "name": "Plant Watering",
+  "short_name": "Plants",
+  "description": "Keep the houseplants watered.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#EEF2E9",
+  "theme_color": "#EEF2E9",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
