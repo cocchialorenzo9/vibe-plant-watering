@@ -9,8 +9,9 @@
 // type-stripping). Env:
 //   FIREBASE_DB_URL  Realtime Database base URL, e.g.
 //                    https://personal-website-abda6-default-rtdb.europe-west1.firebasedatabase.app
-//   FIREBASE_DB_AUTH optional ?auth= token, only if the rules stop allowing
-//                    anonymous read/write on the plantWatering subtree
+//   FIREBASE_API_KEY web API key — used to mint a short-lived anonymous ID
+//                    token so the REST calls satisfy the `auth != null` rules
+//   FIREBASE_DB_AUTH optional pre-minted ?auth= token; skips the anon sign-in
 //   RESEND_API_KEY
 //   REMINDER_TO      recipient address
 //   REMINDER_FROM    verified sender (default: onboarding@resend.dev)
@@ -41,10 +42,23 @@ async function loadPlants() {
   return JSON.parse(raw);
 }
 
-function dbUrl(suffix) {
+/** A short-lived anonymous ID token (or the pre-supplied one). */
+async function firebaseToken() {
+  if (env.FIREBASE_DB_AUTH) return env.FIREBASE_DB_AUTH;
+  const key = required("FIREBASE_API_KEY");
+  const res = await fetch(
+    `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${key}`,
+    { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" },
+  );
+  if (!res.ok) {
+    throw new Error(`Firebase anonymous sign-in failed (${res.status})`);
+  }
+  return (await res.json()).idToken;
+}
+
+function dbUrl(suffix, token) {
   const base = required("FIREBASE_DB_URL").replace(/\/$/, "");
-  const auth = env.FIREBASE_DB_AUTH ? `?auth=${env.FIREBASE_DB_AUTH}` : "";
-  return `${base}/plantWatering${suffix}.json${auth}`;
+  return `${base}/plantWatering${suffix}.json${token ? `?auth=${token}` : ""}`;
 }
 
 /** Realtime Database stores events as an object keyed by `plantId__date`. */
@@ -63,21 +77,21 @@ function normalise(raw) {
   };
 }
 
-async function loadWatering() {
+async function loadWatering(token) {
   if (env.DATA_FILE) {
     const raw = JSON.parse(
       await readFile(resolve(process.cwd(), env.DATA_FILE), "utf8"),
     );
     return normalise(raw);
   }
-  const res = await fetch(dbUrl(""));
+  const res = await fetch(dbUrl("", token));
   if (!res.ok) throw new Error(`Database read failed (${res.status})`);
   return normalise(await res.json());
 }
 
-async function markReminded(today) {
+async function markReminded(today, token) {
   if (env.DATA_FILE) return; // local test file: nothing to persist
-  const res = await fetch(dbUrl("/settings"), {
+  const res = await fetch(dbUrl("/settings", token), {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ lastRemindedOn: today }),
@@ -93,7 +107,11 @@ function pluralDays(n) {
 
 async function main() {
   const today = todayInBerlin();
-  const [plants, watering] = await Promise.all([loadPlants(), loadWatering()]);
+  const token = env.DATA_FILE ? null : await firebaseToken();
+  const [plants, watering] = await Promise.all([
+    loadPlants(),
+    loadWatering(token),
+  ]);
 
   if (watering.settings.reminderEnabled === false) {
     console.log(`[${today}] Evening reminder disabled in settings — no email.`);
@@ -169,7 +187,7 @@ async function main() {
   if (!res.ok) {
     throw new Error(`Resend failed (${res.status}): ${await res.text()}`);
   }
-  await markReminded(today);
+  await markReminded(today, token);
   console.log(`[${today}] Sent: ${subject}`);
 }
 

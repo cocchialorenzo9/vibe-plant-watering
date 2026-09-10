@@ -1,8 +1,8 @@
 {
-  "_comment": "Add this block under `rules` in the personal-site repo's database.rules.json, alongside `homeState`. Same public read/write posture; `.validate` keeps the subtree shaped like a watering log.",
+  "_comment": "Add this block under `rules` in the personal-site repo's database.rules.json, alongside `homeState`. Requires an authenticated caller — the app signs in anonymously, the reminder script mints an anon ID token. Enable Authentication > Sign-in method > Anonymous in the Firebase console first. `.validate` keeps the subtree shaped like a watering log.",
   "plantWatering": {
-    ".read": true,
-    ".write": true,
+    ".read": "auth != null",
+    ".write": "auth != null",
     "events": {
       "$eventId": {
         ".validate": "newData.hasChildren(['plantId', 'date', 'loggedAt'])",

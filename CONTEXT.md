@@ -84,10 +84,11 @@ has passed. The dashboard groups Plants by this.
   are committed static assets, world-readable.
 - Watering events, overrides and the reminder toggle live in a subtree of the
   shared Firebase Realtime Database reused from the personal-site project.
-  Writes go straight from the browser; no client secret (the web API key is a
-  project id, not a credential); access is governed by DB security rules. See
-  ADR 0002. With no API key configured (local dev), a localStorage stand-in
-  seeded from `watering.example.json` is used instead.
+  Writes go straight from the browser after an anonymous Firebase sign-in
+  (rules require `auth != null`); no client secret (the web API key is a
+  project id, not a credential). See ADR 0002. With no API key configured
+  (local dev), a localStorage stand-in seeded from `watering.example.json` is
+  used instead.
 - The deployed web app is read-mostly: its only writes are logging Watering
   events and editing schedules/intervals. Registration is Claude-Code-only.
 - Tab bar: Plants / Add / History / Settings, where "Add" is a static

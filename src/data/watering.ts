@@ -13,7 +13,7 @@ import {
   update,
   type Database,
 } from "firebase/database";
-import { getDb, WATERING_PATH } from "./firebase";
+import { authReady, getDb, WATERING_PATH } from "./firebase";
 
 const EMPTY: WateringData = { events: [], overrides: {} };
 
@@ -222,6 +222,7 @@ class FirebaseBackend implements WateringBackend {
   }
 
   async load(): Promise<WateringData> {
+    await authReady();
     const snap = await get(this.root());
     return treeToData(snap.val());
   }
@@ -230,11 +231,22 @@ class FirebaseBackend implements WateringBackend {
     onData: (data: WateringData) => void,
     onError?: (err: Error) => void,
   ): () => void {
-    return onValue(
-      this.root(),
-      (snap) => onData(treeToData(snap.val())),
-      (err) => onError?.(err),
-    );
+    // Attach the listener only after the anonymous sign-in settles, otherwise
+    // the rules reject the read and onValue fires a spurious error.
+    let cancelled = false;
+    let detach: (() => void) | undefined;
+    authReady().then(() => {
+      if (cancelled) return;
+      detach = onValue(
+        this.root(),
+        (snap) => onData(treeToData(snap.val())),
+        (err) => onError?.(err),
+      );
+    });
+    return () => {
+      cancelled = true;
+      detach?.();
+    };
   }
 
   async addEvents(events: WateringEvent[]): Promise<WateringData> {

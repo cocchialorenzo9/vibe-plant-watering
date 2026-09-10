@@ -39,18 +39,27 @@ talk to the real shared database.
 2. **Firebase key:** add repo secret `VITE_FIREBASE_API_KEY` — the same web API
    key the personal site uses (`FIREBASE_API_KEY` in that repo's `.env`). It is
    a project identifier, not a credential.
-3. **Database rules:** in the **personal-site repo** (which owns rule
-   deployment), add the `plantWatering` block from `firebase.rules.snippet.json`
-   to `database.rules.json`, then `firebase deploy --only database` — or paste
-   it in the Firebase console under **Realtime Database → Rules → Publish**.
-   This is the only manual Firebase step.
-4. **Reminder:** add repo secret `RESEND_API_KEY` and `REMINDER_TO`, and repo
-   variable `FIREBASE_DB_URL`
+3. **Firebase console (one-time):**
+   - **Authentication → Sign-in method → Anonymous → Enable.** The `plantWatering`
+     rules require `auth != null`; the app signs in anonymously.
+   - **Database rules:** in the **personal-site repo** (which owns rule
+     deployment), add the `plantWatering` block from `firebase.rules.snippet.json`
+     to `database.rules.json`, then `firebase deploy --only database` — or paste
+     it under **Realtime Database → Rules → Publish**.
+4. **Reminder:** add repo secrets `RESEND_API_KEY`, `REMINDER_TO`
+   (`cocchialorenzo@gmail.com`), and `VITE_FIREBASE_API_KEY` (reused by the
+   script to mint an anon token); repo variable `FIREBASE_DB_URL`
    (`https://personal-website-abda6-default-rtdb.europe-west1.firebasedatabase.app`);
    optional variables `REMINDER_FROM`, `APP_URL`, and secret `FIREBASE_DB_AUTH`
-   (only if the rules later require auth). Test with **Actions → Evening
+   (a pre-minted token, skips the anon sign-in). Test with **Actions → Evening
    watering reminder → Run workflow** (dry run). The job fires hourly 16–21 UTC,
    acts only during the Berlin evening, and emails at most once per day.
+
+   `REMINDER_FROM` defaults to `onboarding@resend.dev` (works with no setup,
+   Resend test mode only delivers to your own account address). To send as
+   `Plant Watering <noreply@vibewatering.dev>`, you must own `vibewatering.dev`,
+   add it under **Resend → Domains**, and publish the SPF/DKIM/DMARC DNS records
+   it gives you; then set the `REMINDER_FROM` variable to that address.
 
 ## Adding a plant (Claude Code)
 

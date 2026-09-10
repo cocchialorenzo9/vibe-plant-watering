@@ -44,6 +44,7 @@ jobs:
         run: node scripts/send-reminder.mjs
         env:
           FIREBASE_DB_URL: ${{ vars.FIREBASE_DB_URL }}
+          FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
           FIREBASE_DB_AUTH: ${{ secrets.FIREBASE_DB_AUTH }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           REMINDER_TO: ${{ secrets.REMINDER_TO }}
