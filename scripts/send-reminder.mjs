@@ -6,15 +6,14 @@
 //
 // Requires Node >= 22 (imports the TypeScript domain modules directly via
 // type-stripping). Env:
-//   DATA_TOKEN   fine-grained PAT with contents:read+write on the data repo
-//               (write is used only to stamp settings.lastRemindedOn so the
-//                same evening is never emailed twice)
-//   DATA_OWNER   e.g. cocchialorenzo
-//   DATA_REPO    e.g. plant-watering-data
-//   DATA_PATH    e.g. watering.json
+//   FIREBASE_DB_URL  Realtime Database base URL, e.g.
+//                    https://personal-website-abda6-default-rtdb.europe-west1.firebasedatabase.app
+//   FIREBASE_DB_AUTH optional ?auth= token, only if the rules stop allowing
+//                    anonymous read/write on the plantWatering subtree
 //   RESEND_API_KEY
 //   REMINDER_TO      recipient address
 //   REMINDER_FROM    verified sender (default: onboarding@resend.dev)
+//   DATA_FILE        local JSON file to read instead of Firebase (testing)
 //   DRY_RUN=1        print instead of sending
 
 import { readFile } from "node:fs/promises";
@@ -41,24 +40,22 @@ async function loadPlants() {
   return JSON.parse(raw);
 }
 
-function dataApiUrl() {
-  const owner = required("DATA_OWNER");
-  const repo = required("DATA_REPO");
-  const path = env.DATA_PATH || "watering.json";
-  return `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+function dbUrl(suffix) {
+  const base = required("FIREBASE_DB_URL").replace(/\/$/, "");
+  const auth = env.FIREBASE_DB_AUTH ? `?auth=${env.FIREBASE_DB_AUTH}` : "";
+  return `${base}/plantWatering${suffix}.json${auth}`;
 }
 
-function ghHeaders() {
-  return {
-    Authorization: `Bearer ${required("DATA_TOKEN")}`,
-    Accept: "application/vnd.github+json",
-    "X-GitHub-Api-Version": "2022-11-28",
-  };
-}
-
+/** Realtime Database stores events as an object keyed by `plantId__date`. */
 function normalise(raw) {
+  const rawEvents = raw?.events;
+  const events = Array.isArray(rawEvents)
+    ? rawEvents
+    : rawEvents && typeof rawEvents === "object"
+      ? Object.values(rawEvents)
+      : [];
   return {
-    events: Array.isArray(raw?.events) ? raw.events : [],
+    events,
     overrides:
       raw?.overrides && typeof raw.overrides === "object" ? raw.overrides : {},
     settings: raw?.settings && typeof raw.settings === "object" ? raw.settings : {},
@@ -70,32 +67,19 @@ async function loadWatering() {
     const raw = JSON.parse(
       await readFile(resolve(process.cwd(), env.DATA_FILE), "utf8"),
     );
-    return { data: normalise(raw), sha: null };
+    return normalise(raw);
   }
-  const res = await fetch(dataApiUrl(), { headers: ghHeaders() });
-  if (res.status === 404) return { data: normalise(null), sha: null };
-  if (!res.ok) throw new Error(`Data repo read failed (${res.status})`);
-  const body = await res.json();
-  return {
-    data: normalise(JSON.parse(Buffer.from(body.content, "base64").toString("utf8"))),
-    sha: body.sha,
-  };
+  const res = await fetch(dbUrl(""));
+  if (!res.ok) throw new Error(`Database read failed (${res.status})`);
+  return normalise(await res.json());
 }
 
-async function markReminded(data, sha, today) {
-  if (env.DATA_FILE || !sha) return; // local / not-yet-created file: nothing to persist
-  const next = {
-    ...data,
-    settings: { ...data.settings, lastRemindedOn: today },
-  };
-  const res = await fetch(dataApiUrl(), {
-    method: "PUT",
-    headers: { ...ghHeaders(), "Content-Type": "application/json" },
-    body: JSON.stringify({
-      message: `Reminder sent ${today}`,
-      content: Buffer.from(JSON.stringify(next, null, 2) + "\n").toString("base64"),
-      sha,
-    }),
+async function markReminded(today) {
+  if (env.DATA_FILE) return; // local test file: nothing to persist
+  const res = await fetch(dbUrl("/settings"), {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ lastRemindedOn: today }),
   });
   if (!res.ok) {
     console.warn(`Could not record reminder marker (${res.status})`);
@@ -108,8 +92,7 @@ function pluralDays(n) {
 
 async function main() {
   const today = todayInBerlin();
-  const [plants, loaded] = await Promise.all([loadPlants(), loadWatering()]);
-  const { data: watering, sha } = loaded;
+  const [plants, watering] = await Promise.all([loadPlants(), loadWatering()]);
 
   if (watering.settings.reminderEnabled === false) {
     console.log(`[${today}] Evening reminder disabled in settings — no email.`);
@@ -185,7 +168,7 @@ async function main() {
   if (!res.ok) {
     throw new Error(`Resend failed (${res.status}): ${await res.text()}`);
   }
-  await markReminded(watering, sha, today);
+  await markReminded(today);
   console.log(`[${today}] Sent: ${subject}`);
 }
 

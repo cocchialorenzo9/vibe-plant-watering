@@ -42,10 +42,8 @@ jobs:
         if: steps.gate.outputs.run == 'true'
         run: node scripts/send-reminder.mjs
         env:
-          DATA_TOKEN: ${{ secrets.DATA_TOKEN }}
-          DATA_OWNER: ${{ secrets.DATA_OWNER }}
-          DATA_REPO: ${{ secrets.DATA_REPO }}
-          DATA_PATH: ${{ vars.DATA_PATH || 'watering.json' }}
+          FIREBASE_DB_URL: ${{ vars.FIREBASE_DB_URL }}
+          FIREBASE_DB_AUTH: ${{ secrets.FIREBASE_DB_AUTH }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           REMINDER_TO: ${{ secrets.REMINDER_TO }}
           REMINDER_FROM: ${{ vars.REMINDER_FROM || 'Plant Watering <onboarding@resend.dev>' }}

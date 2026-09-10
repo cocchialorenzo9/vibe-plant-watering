@@ -12,9 +12,9 @@ static and read-mostly.
 | Concern | Where |
 |---|---|
 | App | Static SPA (Vite + React), GitHub Pages, hash routing |
-| Plants, species, care, avatars | Committed JSON + PNGs in `public/` (this public repo) |
-| Watering events + schedule overrides + reminder toggle | JSON file in a **separate private repo**, written from the app via the GitHub contents API with a fine-grained PAT stored in the browser |
-| 7pm reminder email | Scheduled GitHub Action → `scripts/send-reminder.mjs` → Resend |
+| Plants, species, care, avatars | Committed JSON + images in `public/` (this public repo) |
+| Watering events + overrides + reminder toggle | `plantWatering` subtree of the **shared Firebase Realtime Database** reused from the personal-site project; browser reads/writes it directly, no client secret |
+| 7pm reminder email | Scheduled GitHub Action → `scripts/send-reminder.mjs` → Firebase REST → Resend |
 | Adding a plant | Claude Code phone app: photo/name → web search → avatar → commit |
 
 ## Develop
@@ -27,27 +27,30 @@ npm run typecheck
 npm run build
 ```
 
-Without a configured PAT the app uses a local (localStorage) watering store
-seeded from `public/data/watering.example.json`, so it is fully usable offline
-of GitHub for development and demoing.
+With no `VITE_FIREBASE_API_KEY` set, the app uses a local (localStorage)
+watering store seeded from `public/data/watering.example.json` — fully usable
+for development and demoing. Set the key in `.env.local` (see `.env.example`) to
+talk to the real shared database.
 
 ## Deploy
 
-1. Push to `main` → `.github/workflows/deploy.yml` builds and publishes to Pages.
-   Set **Settings → Pages → Source = GitHub Actions**.
-2. Create a **private** repo `plant-watering-data` containing `watering.json`:
-   ```json
-   { "events": [], "overrides": {} }
-   ```
-3. In the app's **Settings → Connection**, enter the repo owner, `plant-watering-data`,
-   and a fine-grained PAT with **Contents: Read and write** scoped to that repo only.
-4. For the reminder, add repo secrets: `DATA_TOKEN` (contents **read + write**
-   on the data repo — write is used only to stamp a per-day "already sent"
-   marker), `DATA_OWNER`, `DATA_REPO`, `RESEND_API_KEY`, `REMINDER_TO`;
-   optional repo variables `REMINDER_FROM`, `APP_URL`, `DATA_PATH`.
-   Test it with **Actions → Evening watering reminder → Run workflow** (dry run).
-   The job fires hourly 16–21 UTC, acts only during the Berlin evening, and
-   emails at most once per day.
+1. **Pages:** push to `main` → `.github/workflows/deploy.yml` builds and
+   publishes. Set **Settings → Pages → Source = GitHub Actions**.
+2. **Firebase key:** add repo secret `VITE_FIREBASE_API_KEY` — the same web API
+   key the personal site uses (`FIREBASE_API_KEY` in that repo's `.env`). It is
+   a project identifier, not a credential.
+3. **Database rules:** in the **personal-site repo** (which owns rule
+   deployment), add the `plantWatering` block from `firebase.rules.snippet.json`
+   to `database.rules.json`, then `firebase deploy --only database` — or paste
+   it in the Firebase console under **Realtime Database → Rules → Publish**.
+   This is the only manual Firebase step.
+4. **Reminder:** add repo secret `RESEND_API_KEY` and `REMINDER_TO`, and repo
+   variable `FIREBASE_DB_URL`
+   (`https://personal-website-abda6-default-rtdb.europe-west1.firebasedatabase.app`);
+   optional variables `REMINDER_FROM`, `APP_URL`, and secret `FIREBASE_DB_AUTH`
+   (only if the rules later require auth). Test with **Actions → Evening
+   watering reminder → Run workflow** (dry run). The job fires hourly 16–21 UTC,
+   acts only during the Berlin evening, and emails at most once per day.
 
 ## Adding a plant (Claude Code)
 
@@ -60,5 +63,6 @@ and commits. The plant appears after the Pages redeploy.
 
 - App icons are SVG only (`public/icon.svg`); generate PNG `icon-192/512` for
   full iOS home-screen fidelity.
-- Migrate the watering store to a Cloudflare Worker + D1 (ADR 0002) to remove
-  the client-side PAT.
+- The watering store shares the personal-site Firebase project. Move it to its
+  own project (or Firestore) if the coupling ever bites — `getWateringBackend()`
+  in `src/data/watering.ts` is the single swap point (ADR 0002).

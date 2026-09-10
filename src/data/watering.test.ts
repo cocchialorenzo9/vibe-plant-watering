@@ -1,14 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { getWateringBackend } from "./watering";
-import type { AppConfig } from "./config";
-
-const cfg: AppConfig = {
-  token: "",
-  owner: "",
-  repo: "",
-  path: "watering.json",
-  reminderEnabled: true,
-};
 
 beforeEach(() => {
   localStorage.clear();
@@ -17,12 +8,12 @@ beforeEach(() => {
 });
 
 describe("LocalBackend", () => {
-  it("is selected when there is no GitHub config", () => {
-    expect(getWateringBackend(cfg).kind).toBe("local");
+  it("is selected when Firebase is not configured", () => {
+    expect(getWateringBackend().kind).toBe("local");
   });
 
   it("dedupes a repeated {plantId, date} watering", async () => {
-    const b = getWateringBackend(cfg);
+    const b = getWateringBackend();
     await b.addEvents([
       { plantId: "monstera", date: "2026-09-10", loggedAt: "2026-09-10T18:00:00Z" },
     ]);
@@ -34,7 +25,7 @@ describe("LocalBackend", () => {
   });
 
   it("keeps events for different plants and dates", async () => {
-    const b = getWateringBackend(cfg);
+    const b = getWateringBackend();
     await b.addEvents([
       { plantId: "monstera", date: "2026-09-10", loggedAt: "a" },
       { plantId: "aloe", date: "2026-09-10", loggedAt: "b" },
@@ -46,13 +37,13 @@ describe("LocalBackend", () => {
   });
 
   it("stores household settings for the reminder job", async () => {
-    const b = getWateringBackend(cfg);
+    const b = getWateringBackend();
     const data = await b.setSettings({ reminderEnabled: false });
     expect(data.settings).toEqual({ reminderEnabled: false });
   });
 
   it("removes a specific watering event", async () => {
-    const b = getWateringBackend(cfg);
+    const b = getWateringBackend();
     await b.addEvents([
       { plantId: "monstera", date: "2026-09-10", loggedAt: "a" },
       { plantId: "monstera", date: "2026-09-17", loggedAt: "b" },
@@ -64,7 +55,7 @@ describe("LocalBackend", () => {
   });
 
   it("keeps household settings when events change", async () => {
-    const b = getWateringBackend(cfg);
+    const b = getWateringBackend();
     await b.setSettings({ reminderEnabled: false });
     const data = await b.addEvents([
       { plantId: "monstera", date: "2026-09-10", loggedAt: "a" },
@@ -73,7 +64,7 @@ describe("LocalBackend", () => {
   });
 
   it("replaces a plant override", async () => {
-    const b = getWateringBackend(cfg);
+    const b = getWateringBackend();
     const data = await b.setOverride("monstera", {
       intervalOverride: { summer: 5, winter: 9 },
     });

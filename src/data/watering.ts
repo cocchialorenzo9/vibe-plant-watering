@@ -4,7 +4,16 @@ import type {
   WateringData,
   WateringEvent,
 } from "../domain/types";
-import { type AppConfig, isConnected } from "./config";
+import {
+  get,
+  onValue,
+  ref,
+  remove,
+  set,
+  update,
+  type Database,
+} from "firebase/database";
+import { getDb, WATERING_PATH } from "./firebase";
 
 const EMPTY: WateringData = { events: [], overrides: {} };
 
@@ -59,8 +68,10 @@ function without(
 }
 
 export interface WateringBackend {
-  readonly kind: "local" | "github";
+  readonly kind: "local" | "firebase";
   load(signal?: AbortSignal): Promise<WateringData>;
+  /** Optional live sync; returns an unsubscribe function. */
+  subscribe?(onData: (data: WateringData) => void): () => void;
   addEvents(events: WateringEvent[]): Promise<WateringData>;
   removeEvent(plantId: string, date: string): Promise<WateringData>;
   setOverride(plantId: string, override: PlantOverride): Promise<WateringData>;
@@ -69,6 +80,7 @@ export interface WateringBackend {
 
 /* ------------------------------------------------------------------ */
 /* Local backend — localStorage, seeded from the bundled example file. */
+/* Used for development and demoing when no Firebase key is present.   */
 /* ------------------------------------------------------------------ */
 
 const LOCAL_KEY = "pw:watering";
@@ -143,124 +155,108 @@ class LocalBackend implements WateringBackend {
 }
 
 /* ------------------------------------------------------------------ */
-/* GitHub backend — a JSON file in the private data repo.              */
+/* Firebase backend — one subtree in the shared Realtime Database.     */
+/*                                                                    */
+/*   plantWatering/                                                   */
+/*     events/<plantId>__<date>: { plantId, date, loggedAt }          */
+/*     overrides/<plantId>:      { intervalOverride?, nextDueAnchor? } */
+/*     settings:                 { reminderEnabled, lastRemindedOn? }  */
+/*                                                                    */
+/* The deterministic event key is the {plantId, date} idempotency     */
+/* guarantee; concurrent writers touch disjoint child paths, so there */
+/* is no read-modify-write race on the tree as a whole.               */
 /* ------------------------------------------------------------------ */
 
-interface GhFile {
-  data: WateringData;
-  sha: string | null;
+function eventKey(plantId: string, date: string): string {
+  return `${plantId}__${date}`;
 }
 
-const API = "https://api.github.com";
-
-function b64decode(s: string): string {
-  return decodeURIComponent(escape(atob(s.replace(/\n/g, ""))));
-}
-function b64encode(s: string): string {
-  return btoa(unescape(encodeURIComponent(s)));
+interface RawTree {
+  events?: Record<string, WateringEvent>;
+  overrides?: Record<string, PlantOverride>;
+  settings?: HouseholdSettings;
 }
 
-class GitHubBackend implements WateringBackend {
-  readonly kind = "github" as const;
-  constructor(private cfg: AppConfig) {}
+function treeToData(raw: RawTree | null): WateringData {
+  if (!raw) return EMPTY;
+  const events = raw.events ? Object.values(raw.events) : [];
+  return {
+    events: dedupeEvents(events),
+    overrides: raw.overrides ?? {},
+    ...(raw.settings ? { settings: raw.settings } : {}),
+  };
+}
 
-  private url(): string {
-    const { owner, repo, path } = this.cfg;
-    return `${API}/repos/${owner}/${repo}/contents/${path}`;
+/** Drop keys whose value is `undefined` — Realtime Database rejects them. */
+function pruneUndefined<T extends object>(obj: T): Partial<T> {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+class FirebaseBackend implements WateringBackend {
+  readonly kind = "firebase" as const;
+  constructor(private db: Database) {}
+
+  private root() {
+    return ref(this.db, WATERING_PATH);
   }
 
-  private headers(): HeadersInit {
-    return {
-      Authorization: `Bearer ${this.cfg.token}`,
-      Accept: "application/vnd.github+json",
-      "X-GitHub-Api-Version": "2022-11-28",
-    };
+  async load(): Promise<WateringData> {
+    const snap = await get(this.root());
+    return treeToData(snap.val());
   }
 
-  private async fetchFile(signal?: AbortSignal): Promise<GhFile> {
-    const res = await fetch(this.url(), { headers: this.headers(), signal });
-    if (res.status === 404) return { data: EMPTY, sha: null };
-    if (!res.ok) {
-      throw new Error(`GitHub read failed (${res.status})`);
-    }
-    const body = (await res.json()) as { content: string; sha: string };
-    return {
-      data: JSON.parse(b64decode(body.content)) as WateringData,
-      sha: body.sha,
-    };
-  }
-
-  async load(signal?: AbortSignal): Promise<WateringData> {
-    return (await this.fetchFile(signal)).data;
-  }
-
-  private async commit(
-    apply: (current: WateringData) => WateringData,
-    message: string,
-  ): Promise<WateringData> {
-    // Up to 3 attempts to absorb a concurrent write (409 / stale sha).
-    let lastErr: unknown;
-    for (let attempt = 0; attempt < 3; attempt++) {
-      const { data, sha } = await this.fetchFile();
-      const next = apply(data);
-      const res = await fetch(this.url(), {
-        method: "PUT",
-        headers: { ...this.headers(), "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message,
-          content: b64encode(JSON.stringify(next, null, 2) + "\n"),
-          ...(sha ? { sha } : {}),
-        }),
-      });
-      if (res.ok) return next;
-      // 409 is a stale-sha conflict — refetch and retry. Everything else
-      // (401/403 auth, 404 path, 422 payload) is terminal.
-      if (res.status === 409) {
-        lastErr = new Error("GitHub write conflict (409)");
-        continue;
-      }
-      const detail = await res.text().catch(() => "");
-      throw new Error(
-        `GitHub write failed (${res.status})${detail ? `: ${detail.slice(0, 200)}` : ""}`,
-      );
-    }
-    throw lastErr ?? new Error("GitHub write failed");
+  subscribe(onData: (data: WateringData) => void): () => void {
+    return onValue(this.root(), (snap) => onData(treeToData(snap.val())));
   }
 
   async addEvents(events: WateringEvent[]): Promise<WateringData> {
-    return this.commit(
-      (cur) => merge(cur, events),
-      `Log watering: ${events.map((e) => e.plantId).join(", ")}`,
-    );
+    const current = await this.load();
+    const have = new Set(current.events.map((e) => eventKey(e.plantId, e.date)));
+    const patch: Record<string, WateringEvent> = {};
+    for (const e of events) {
+      const key = eventKey(e.plantId, e.date);
+      if (!have.has(key)) patch[key] = e;
+    }
+    if (Object.keys(patch).length > 0) {
+      await update(ref(this.db, `${WATERING_PATH}/events`), patch);
+    }
+    return this.load();
   }
 
   async removeEvent(plantId: string, date: string): Promise<WateringData> {
-    return this.commit(
-      (cur) => without(cur, plantId, date),
-      `Undo watering: ${plantId} ${date}`,
+    await remove(
+      ref(this.db, `${WATERING_PATH}/events/${eventKey(plantId, date)}`),
     );
+    return this.load();
   }
 
   async setOverride(
     plantId: string,
     override: PlantOverride,
   ): Promise<WateringData> {
-    return this.commit(
-      (cur) => merge(cur, [], { plantId, override }),
-      `Update schedule: ${plantId}`,
+    await set(
+      ref(this.db, `${WATERING_PATH}/overrides/${plantId}`),
+      pruneUndefined(override),
     );
+    return this.load();
   }
 
   async setSettings(
     patch: Partial<HouseholdSettings>,
   ): Promise<WateringData> {
-    return this.commit(
-      (cur) => merge(cur, [], undefined, patch),
-      `Update household settings`,
+    await update(
+      ref(this.db, `${WATERING_PATH}/settings`),
+      pruneUndefined(patch),
     );
+    return this.load();
   }
 }
 
-export function getWateringBackend(cfg: AppConfig): WateringBackend {
-  return isConnected(cfg) ? new GitHubBackend(cfg) : new LocalBackend();
+/**
+ * The Firebase backend when an API key is configured, otherwise a local
+ * localStorage-backed store for development.
+ */
+export function getWateringBackend(): WateringBackend {
+  const db = getDb();
+  return db ? new FirebaseBackend(db) : new LocalBackend();
 }

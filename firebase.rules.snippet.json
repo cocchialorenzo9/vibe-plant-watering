@@ -1,0 +1,36 @@
+{
+  "_comment": "Add this block under `rules` in the personal-site repo's database.rules.json, alongside `homeState`. Same public read/write posture; `.validate` keeps the subtree shaped like a watering log.",
+  "plantWatering": {
+    ".read": true,
+    ".write": true,
+    "events": {
+      "$eventId": {
+        ".validate": "newData.hasChildren(['plantId', 'date', 'loggedAt'])",
+        "plantId": { ".validate": "newData.isString()" },
+        "date": {
+          ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)"
+        },
+        "loggedAt": { ".validate": "newData.isString()" },
+        "$other": { ".validate": false }
+      }
+    },
+    "overrides": {
+      "$plantId": {
+        "intervalOverride": {
+          "summer": { ".validate": "newData.isNumber()" },
+          "winter": { ".validate": "newData.isNumber()" },
+          "$other": { ".validate": false }
+        },
+        "nextDueAnchor": {
+          ".validate": "newData.isString() || !newData.exists()"
+        },
+        "$other": { ".validate": false }
+      }
+    },
+    "settings": {
+      "reminderEnabled": { ".validate": "newData.isBoolean()" },
+      "lastRemindedOn": { ".validate": "newData.isString()" },
+      "$other": { ".validate": false }
+    }
+  }
+}

@@ -16,12 +16,7 @@ import type {
 import { computeSchedule } from "../domain/schedule";
 import { todayInBerlin } from "../lib/date";
 import { fetchPlants } from "../data/plants";
-import {
-  type AppConfig,
-  isConnected,
-  loadConfig,
-  saveConfig,
-} from "../data/config";
+import { firebaseConfigured } from "../data/firebase";
 import { getWateringBackend } from "../data/watering";
 
 interface StoreValue {
@@ -30,7 +25,7 @@ interface StoreValue {
   today: string;
   plants: Plant[];
   watering: WateringData;
-  config: AppConfig;
+  /** True when watering writes go to the shared Firebase store. */
   connected: boolean;
   schedules: Map<string, PlantSchedule>;
   plantById: (id: string) => Plant | undefined;
@@ -39,7 +34,6 @@ interface StoreValue {
   setOverride: (plantId: string, override: PlantOverride) => Promise<void>;
   reminderEnabled: boolean;
   setReminderEnabled: (v: boolean) => Promise<void>;
-  updateConfig: (patch: Partial<AppConfig>) => void;
   reload: () => void;
 }
 
@@ -58,7 +52,6 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       window.removeEventListener("focus", sync);
     };
   }, []);
-  const [config, setConfig] = useState<AppConfig>(() => loadConfig());
   const [plants, setPlants] = useState<Plant[]>([]);
   const [watering, setWatering] = useState<WateringData>({
     events: [],
@@ -68,7 +61,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [error, setError] = useState<string | null>(null);
   const [nonce, setNonce] = useState(0);
 
-  const backend = useMemo(() => getWateringBackend(config), [config]);
+  const backend = useMemo(() => getWateringBackend(), []);
 
   useEffect(() => {
     const ac = new AbortController();
@@ -87,7 +80,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       .finally(() => {
         if (!ac.signal.aborted) setLoading(false);
       });
-    return () => ac.abort();
+    // Live sync: later writes from any device push straight into state.
+    const unsubscribe = backend.subscribe?.((w) => setWatering(w));
+    return () => {
+      ac.abort();
+      unsubscribe?.();
+    };
   }, [backend, nonce]);
 
   const schedules = useMemo(() => {
@@ -145,18 +143,13 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     [backend],
   );
 
-  const updateConfig = useCallback((patch: Partial<AppConfig>) => {
-    setConfig(saveConfig(patch));
-  }, []);
-
   const value: StoreValue = {
     loading,
     error,
     today,
     plants,
     watering,
-    config,
-    connected: isConnected(config),
+    connected: firebaseConfigured(),
     schedules,
     plantById,
     logWatering,
@@ -164,7 +157,6 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     setOverride,
     reminderEnabled: watering.settings?.reminderEnabled ?? true,
     setReminderEnabled,
-    updateConfig,
     reload: () => setNonce((n) => n + 1),
   };
 

@@ -1,6 +1,7 @@
 // Minimal service worker: makes the app installable and serves the shell
-// offline. Watering writes are online-only (see ADR 0002 / CONTEXT.md) — this
-// SW deliberately does NOT cache API responses or queue writes.
+// offline. Watering data is online-only via Firebase (see ADR 0002 /
+// CONTEXT.md) — this SW deliberately does NOT cache API responses or queue
+// writes.
 const CACHE = "pw-shell-v1";
 const SHELL = [self.registration.scope, self.registration.scope + "index.html"];
 
@@ -25,8 +26,13 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET") return;
   const url = new URL(request.url);
 
-  // Never touch the GitHub API.
-  if (url.hostname === "api.github.com") return;
+  // Never touch Firebase / Google APIs — watering data must stay live.
+  if (
+    url.hostname.endsWith("firebaseio.com") ||
+    url.hostname.endsWith("firebasedatabase.app") ||
+    url.hostname.endsWith("googleapis.com")
+  )
+    return;
 
   // Navigations: network first, fall back to cached shell.
   if (request.mode === "navigate") {

@@ -21,7 +21,7 @@ Plant record, not normalised.
 ### Plant id
 A human-readable slug derived from the nickname at registration
 (`monstera-deliciosa-window`). Stable forever — survives renames — and is the
-key linking a Plant to its Watering events in the private data repo.
+key linking a Plant to its Watering events in the shared watering store.
 
 ### Registering a plant
 The ritual of adding a new Plant, done entirely in the Claude Code phone app:
@@ -42,8 +42,14 @@ the Species at registration, adjustable per Plant.
 
 ### Watering event
 A record that a Plant was actually watered on a given date. The source of
-truth for scheduling. Stored in the private data repo. Defaults to today;
+truth for scheduling. Stored in the shared watering store. Defaults to today;
 date editable only from the plant detail history.
+
+### Watering store
+The single home for all mutable household state — Watering events, Overrides,
+and the reminder toggle. A subtree of the shared Firebase Realtime Database
+reused from the personal-site project; see ADR 0002. In development, with no
+Firebase key configured, a localStorage stand-in is used instead.
 
 ### Next due date
 Derived, never stored: (most recent Watering event date, or `addedOn` if the
@@ -57,10 +63,11 @@ the seasonal rule, rendered for a calendar/forecast view. Recomputed on
 demand, stored nowhere.
 
 ### Override
-A small per-Plant adjustment in the private data repo: `intervalOverride`
-(seasonal pair replacing the authored interval), `nextDueAnchor` (pin the next
-watering to a chosen date), `skipNext`. Overrides are the only way the app
-edits scheduling.
+A small per-Plant adjustment in the watering store: `intervalOverride`
+(seasonal pair replacing the authored interval) and `nextDueAnchor` (pin the
+next watering to a chosen date; "skip next" is just this pinned to the
+skipped-forward date). Cleared automatically once a later Watering event
+exists. Overrides are the only way the app edits scheduling.
 
 ### Due / Overdue
 A Plant is **due** when its Next due date is today; **overdue** when that date
@@ -75,9 +82,11 @@ has passed. The dashboard groups Plants by this.
 - One shared household collection. No login; access = knowing the URL.
 - Repo is public (GitHub Pages free tier). Plant data, care info and avatars
   are committed static assets, world-readable.
-- Watering events live as JSON in a separate PRIVATE repo, written from the
-  app via the GitHub contents API with a fine-grained PAT in localStorage.
-  Migrate to Cloudflare Worker + D1 later. See ADR 0002.
+- Watering events, overrides and the reminder toggle live in a subtree of the
+  shared Firebase Realtime Database reused from the personal-site project.
+  Writes go straight from the browser; no client secret (the web API key is a
+  project id, not a credential); access is governed by DB security rules. See
+  ADR 0002.
 - The deployed web app is read-mostly: its only writes are logging Watering
   events and editing schedules/intervals. Registration is Claude-Code-only.
 - Tab bar: Plants / Add / History / Settings, where "Add" is a static
@@ -88,8 +97,8 @@ has passed. The dashboard groups Plants by this.
 - Watering intervals are seasonal (summer/winter), authored per Plant.
 - Scheduling is pure derivation from Watering events + Overrides — nothing
   about future dates is stored. Forward calendar is projected on demand.
-- Online-only. No offline queue or service-worker caching; writes hit the
-  GitHub API directly, failures surface a retry toast. PWA-installable only.
+- Online-only. No offline queue or service-worker caching of data; writes hit
+  Firebase directly, failures surface a retry toast. PWA-installable only.
 - Two log gestures: per-plant one-tap "Water" (with undo), and a batch
   "Water check" screen that commits many events at once. Both idempotent on
   {plantId, date}; a Plant already watered today can't be re-logged.
@@ -100,14 +109,17 @@ has passed. The dashboard groups Plants by this.
 - One email only: the 7pm "evening reminder". No morning email (the design's
   second email is dropped). One Settings toggle, on by default. 7pm and the
   recipient address are fixed, shown as static rows.
-- Settings also has a Connection section: the data-repo PAT (password field,
-  localStorage). No PAT => app is read-only (view plants/schedules, can't log).
+- Settings shows a read-only Sync row (Firebase vs. local demo mode). No
+  per-device setup: the Firebase key is baked in at build time.
 - Stack: Vite + React + TypeScript, hash routing (project Pages site),
   Vitest + Testing Library. Domain scheduling logic is pure functions,
-  built test-first. Data access isolated in src/data/ (ADR 0002 swap point).
+  built test-first. Data access isolated in src/data/watering.ts +
+  src/data/firebase.ts (ADR 0002 swap point).
 - Design tokens taken verbatim from design.pen variables. The mockup status
   bar (9:41 / signal / wifi) is chrome, not built.
 - Reminder email: scheduled GitHub Action, evaluated for Europe/Berlin 19:00.
-  Sends only if a Plant is due/overdue today with no Watering event today.
+  Reads the watering store over the Firebase REST API, sends via Resend only
+  if a Plant is due/overdue today with no Watering event today, and stamps
+  `settings.lastRemindedOn` so the same evening is never emailed twice.
   Overdue Plants are listed every evening until watered (no nag cap for now).
   Single recipient for now; email via Resend.
