@@ -1,0 +1,31 @@
+/* Design tokens — taken verbatim from design.pen `variables`. */
+:root {
+  --bg: #eef2e9;
+  --card: #ffffff;
+  --sage: #c8dbbc;
+  --sage-tint: #dde8d2;
+  --ink: #1b3a28;
+  --ink-secondary: #4a6b52;
+  --ink-muted: #7a9a80;
+  --accent: #2d5e3a;
+  --inverse: #1b3a28;
+  --on-inverse: #ffffff;
+  --water: #3e7ca8;
+  --water-tint: #dceaf2;
+  --warn: #be6a3c;
+  --warn-tint: #f3e1d4;
+
+  --font-head: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-full: 9999px;
+
+  --shadow-card: 0 4px 14px rgba(27, 58, 40, 0.08);
+  --shadow-float: 0 6px 18px rgba(27, 58, 40, 0.12);
+
+  --page-pad: 18px;
+}

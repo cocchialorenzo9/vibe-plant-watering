@@ -1,0 +1,82 @@
+.pwc {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--card);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  padding: 14px;
+}
+.pwc__main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+}
+.pwc__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.pwc__name {
+  font-family: var(--font-head);
+  font-size: 18px;
+  color: var(--ink);
+}
+.pwc__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.pwc__btn {
+  border: none;
+  border-radius: var(--r-full);
+  padding: 9px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.pwc__btn:disabled {
+  opacity: 0.6;
+}
+
+.pur {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card);
+  border-radius: var(--r-md);
+  padding: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+.pur__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.pur__name {
+  font-family: var(--font-head);
+  font-size: 15px;
+  color: var(--ink);
+}
+.pur__sub {
+  font-size: 11px;
+}
+.pur__chip {
+  padding: 6px 10px;
+  border-radius: var(--r-full);
+  font-size: 12px;
+  flex-shrink: 0;
+}

@@ -1,0 +1,22 @@
+.backheader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.backheader__back {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--r-full);
+  background: var(--card);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  box-shadow: var(--shadow-card);
+  flex-shrink: 0;
+}
+.backheader__title {
+  font-size: 26px;
+  color: var(--ink);
+}

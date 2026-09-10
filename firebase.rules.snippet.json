@@ -1,0 +1,36 @@
+{
+  "_comment": "Add this block under `rules` in the personal-site repo's database.rules.json, alongside `homeState`. Requires an authenticated caller — the app signs in anonymously, the reminder script mints an anon ID token. Enable Authentication > Sign-in method > Anonymous in the Firebase console first. `.validate` keeps the subtree shaped like a watering log.",
+  "plantWatering": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "events": {
+      "$eventId": {
+        ".validate": "newData.hasChildren(['plantId', 'date', 'loggedAt'])",
+        "plantId": { ".validate": "newData.isString()" },
+        "date": {
+          ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)"
+        },
+        "loggedAt": { ".validate": "newData.isString()" },
+        "$other": { ".validate": false }
+      }
+    },
+    "overrides": {
+      "$plantId": {
+        "intervalOverride": {
+          "summer": { ".validate": "newData.isNumber()" },
+          "winter": { ".validate": "newData.isNumber()" },
+          "$other": { ".validate": false }
+        },
+        "nextDueAnchor": {
+          ".validate": "newData.isString() || !newData.exists()"
+        },
+        "$other": { ".validate": false }
+      }
+    },
+    "settings": {
+      "reminderEnabled": { ".validate": "newData.isBoolean()" },
+      "lastRemindedOn": { ".validate": "newData.isString()" },
+      "$other": { ".validate": false }
+    }
+  }
+}
