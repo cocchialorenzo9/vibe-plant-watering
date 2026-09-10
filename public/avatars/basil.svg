@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <circle cx="256" cy="256" r="248" fill="#dde8d2"/>
+  <circle cx="256" cy="256" r="222" fill="#f2efe3"/>
+  <g transform="translate(256 310)">
+    <!-- pot -->
+    <path d="M-78 28 L78 28 L62 104 A20 20 0 0 1 42 120 L-42 120 A20 20 0 0 1 -62 104 Z" fill="#be6a3c"/>
+    <rect x="-88" y="6" width="176" height="26" rx="13" fill="#8a4a2a"/>
+    <!-- stems -->
+    <path d="M0 8 C-4 -30 -2 -70 6 -104" stroke="#3f5732" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M0 -20 C-30 -34 -52 -34 -68 -20" stroke="#3f5732" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M4 -56 C34 -70 56 -70 74 -54" stroke="#3f5732" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <!-- leaves: rounded oval basil leaves -->
+    <g fill="#4f8f4a">
+      <ellipse cx="-70" cy="-30" rx="30" ry="20" transform="rotate(-18 -70 -30)"/>
+      <ellipse cx="76" cy="-62" rx="30" ry="20" transform="rotate(14 76 -62)"/>
+      <ellipse cx="8" cy="-118" rx="26" ry="34" transform="rotate(-6 8 -118)"/>
+      <ellipse cx="-24" cy="-96" rx="26" ry="18" transform="rotate(-30 -24 -96)"/>
+      <ellipse cx="40" cy="-100" rx="24" ry="17" transform="rotate(24 40 -100)"/>
+    </g>
+    <g fill="#5fa958">
+      <ellipse cx="-70" cy="-30" rx="18" ry="11" transform="rotate(-18 -70 -30)"/>
+      <ellipse cx="76" cy="-62" rx="18" ry="11" transform="rotate(14 76 -62)"/>
+      <ellipse cx="8" cy="-120" rx="15" ry="20" transform="rotate(-6 8 -120)"/>
+    </g>
+    <path d="M8 -152 L8 -86 M-24 -110 L-24 -84 M40 -114 L40 -88 M-70 -46 L-70 -16 M76 -78 L76 -48"
+      stroke="#2f4326" stroke-width="2" opacity="0.5"/>
+  </g>
+</svg>

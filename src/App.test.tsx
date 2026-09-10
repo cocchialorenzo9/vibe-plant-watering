@@ -14,6 +14,7 @@ const monstera: Plant = {
   species: {
     scientificName: "Monstera deliciosa",
     commonNames: ["Swiss cheese plant"],
+    italianName: "Costola di Adamo",
     shortDescription: "A climbing evergreen aroid.",
     origin: "Tropical forests of southern Mexico and Central America.",
     curiosities: ["The fenestrations are thought to let light through to lower leaves."],

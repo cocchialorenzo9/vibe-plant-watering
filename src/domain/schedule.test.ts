@@ -16,6 +16,7 @@ const plant: Plant = {
   species: {
     scientificName: "Monstera deliciosa",
     commonNames: ["Swiss cheese plant"],
+    italianName: "Costola di Adamo",
     shortDescription: "",
     origin: "",
     curiosities: [],

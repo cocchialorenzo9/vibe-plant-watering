@@ -231,6 +231,11 @@
   font-size: 12px;
   color: var(--ink-muted);
 }
+.hero__italian {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
 
 .hero-card {
   background: var(--card);

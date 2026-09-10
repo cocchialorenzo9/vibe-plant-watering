@@ -16,6 +16,8 @@ export interface PlantSource {
 export interface Species {
   scientificName: string;
   commonNames: string[];
+  /** The plant's common name in Italian. */
+  italianName: string;
   shortDescription: string;
   origin: string;
   curiosities: string[];
