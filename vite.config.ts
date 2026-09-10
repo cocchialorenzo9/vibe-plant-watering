@@ -13,5 +13,7 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     setupFiles: ["./src/test/setup.ts"],
+    // Force the local backend in tests regardless of any .env.local key.
+    env: { VITE_FIREBASE_API_KEY: "" },
   },
 });
