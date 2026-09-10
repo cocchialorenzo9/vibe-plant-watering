@@ -38,5 +38,165 @@
     },
     "avatar": "avatars/prayer-plant.svg",
     "addedOn": "2026-09-10"
+  },
+  {
+    "id": "corn-plant",
+    "nickname": "Corn Plant",
+    "species": {
+      "scientificName": "Dracaena fragrans",
+      "commonNames": ["Corn plant", "Cornstalk plant", "Dragon plant"],
+      "shortDescription": "An upright evergreen shrub with a woody, cane-like stem topped by a rosette of broad, glossy, strap-shaped leaves that arch outward like the leaves of a corn stalk.",
+      "origin": "Tropical and subtropical Africa",
+      "curiosities": [
+        "Despite the name, it's unrelated to true corn — the resemblance is only in the shape of its long, ribbed leaves.",
+        "Mature plants can produce a cluster of small, intensely fragrant white flowers, usually only after several years and rarely indoors.",
+        "It shares its genus with the famous 'dragon tree' (Dracaena draco), though its sap doesn't turn blood-red like that species'."
+      ],
+      "toxicity": "Toxic to cats, dogs, and horses if ingested (contains saponins); mildly irritating to humans.",
+      "sources": [
+        {
+          "title": "Dracaena fragrans",
+          "url": "https://en.wikipedia.org/wiki/Dracaena_fragrans"
+        }
+      ]
+    },
+    "care": {
+      "waterIntervalDays": {
+        "summer": 8,
+        "winter": 14
+      },
+      "light": "Bright, indirect light; tolerates low light but leaves narrow and any variegation fades without enough brightness.",
+      "idealTempC": [16, 27]
+    },
+    "avatar": "avatars/corn-plant.svg",
+    "addedOn": "2026-09-10"
+  },
+  {
+    "id": "orchid",
+    "nickname": "Orchid",
+    "species": {
+      "scientificName": "Phalaenopsis (hybrid)",
+      "commonNames": ["Moth orchid", "Phalaenopsis orchid"],
+      "shortDescription": "An epiphytic orchid with a few thick, leathery leaves and a long, often-staked flower spike bearing flat, moth-shaped blooms that can rebloom from the same spike.",
+      "origin": "Tropical rainforests of Southeast Asia and northern Australia",
+      "curiosities": [
+        "The name comes from the Greek phalaina (\"moth\") and opsis (\"appearance\"), describing how the open flowers resemble moths in flight.",
+        "In the wild it grows as an epiphyte on tree branches, anchored by thick aerial roots rather than rooted in soil.",
+        "Cutting a spent flower spike back to a healthy node, rather than removing it entirely, often makes the plant send out a second spike and rebloom."
+      ],
+      "toxicity": "Non-toxic to cats, dogs, and humans.",
+      "sources": [
+        {
+          "title": "Phalaenopsis",
+          "url": "https://en.wikipedia.org/wiki/Phalaenopsis"
+        }
+      ]
+    },
+    "care": {
+      "waterIntervalDays": {
+        "summer": 7,
+        "winter": 12
+      },
+      "light": "Bright, indirect light; direct sun scorches the leaves.",
+      "idealTempC": [18, 27]
+    },
+    "avatar": "avatars/orchid.svg",
+    "addedOn": "2026-09-10"
+  },
+  {
+    "id": "monstera",
+    "nickname": "Monstera",
+    "species": {
+      "scientificName": "Monstera deliciosa",
+      "commonNames": ["Swiss cheese plant", "Split-leaf philodendron", "Ceriman"],
+      "shortDescription": "A climbing aroid with large, glossy, heart-shaped leaves that develop distinctive splits and holes (fenestrations) as the plant matures.",
+      "origin": "Tropical forests of southern Mexico and Central America",
+      "curiosities": [
+        "Young plants have solid, unsplit leaves; the characteristic holes and slits only appear once the plant matures and gets enough light.",
+        "In the wild it climbs tree trunks using aerial roots, which is why potted plants are often given a moss pole or stake to climb.",
+        "Its name comes from Latin monstrum (\"monster\"), for its odd perforated leaves, plus deliciosa for its edible, pineapple-flavored fruit — which is toxic until fully ripe."
+      ],
+      "toxicity": "Toxic to cats and dogs, and irritating to humans if chewed (contains calcium oxalate crystals); unripe fruit is toxic to eat.",
+      "sources": [
+        {
+          "title": "Monstera deliciosa",
+          "url": "https://en.wikipedia.org/wiki/Monstera_deliciosa"
+        }
+      ]
+    },
+    "care": {
+      "waterIntervalDays": {
+        "summer": 7,
+        "winter": 14
+      },
+      "light": "Bright, indirect light; tolerates some shade, but leaves fenestrate less without enough brightness.",
+      "idealTempC": [18, 27]
+    },
+    "avatar": "avatars/monstera.svg",
+    "addedOn": "2026-09-10"
+  },
+  {
+    "id": "rubber-plant",
+    "nickname": "Rubber Plant",
+    "species": {
+      "scientificName": "Ficus elastica 'Burgundy'",
+      "commonNames": ["Rubber plant", "Rubber tree", "Burgundy rubber tree", "Black prince"],
+      "shortDescription": "A dark-leaved cultivar of the rubber tree, with large, thick, glossy leaves so deeply burgundy they read as near-black, each with a contrasting reddish midrib.",
+      "origin": "The species Ficus elastica is native to Southeast and South Asia, from northeast India to Indonesia",
+      "curiosities": [
+        "The species' milky latex sap was once tapped as a commercial source of natural rubber, before Pará rubber tree plantations took over that role.",
+        "New leaves unfurl from a protective, cone-shaped sheath called a stipule, which drops off once the leaf inside opens.",
+        "'Burgundy' and 'Black Prince' are two closely related dark cultivars bred for their near-black foliage, in contrast to the plain green species leaf."
+      ],
+      "toxicity": "Toxic to cats, dogs, and humans; the milky sap can irritate skin and cause stomach upset if ingested.",
+      "sources": [
+        {
+          "title": "Ficus elastica",
+          "url": "https://en.wikipedia.org/wiki/Ficus_elastica"
+        }
+      ]
+    },
+    "care": {
+      "waterIntervalDays": {
+        "summer": 8,
+        "winter": 14
+      },
+      "light": "Bright, indirect light brings out the darkest leaf color; avoid direct sun, which can scorch leaves.",
+      "idealTempC": [18, 27]
+    },
+    "avatar": "avatars/rubber-plant.svg",
+    "addedOn": "2026-09-10"
+  },
+  {
+    "id": "pothos",
+    "nickname": "Pothos",
+    "species": {
+      "scientificName": "Epipremnum aureum 'Marble Queen'",
+      "commonNames": ["Marble queen pothos", "Golden pothos", "Devil's ivy"],
+      "shortDescription": "A trailing vine with heart-shaped leaves heavily marbled in cream and green, each leaf uniquely patterned; slower-growing and less vigorous than the plain green species.",
+      "origin": "Cultivar of a species native to the Society Islands of French Polynesia",
+      "curiosities": [
+        "Its species nickname \"devil's ivy\" comes from how hard it is to kill and how it stays green even when kept in low light.",
+        "In the wild the plain green species can climb over 60 feet up tree trunks, its leaves growing progressively larger and more perforated with age and height — a change potted houseplants rarely reach.",
+        "The heavier a leaf's white variegation, the less chlorophyll it has, so highly marbled leaves like Marble Queen's need brighter light to keep pace with plainer green pothos."
+      ],
+      "toxicity": "Toxic to cats, dogs, and humans if chewed or ingested (contains calcium oxalate crystals).",
+      "sources": [
+        {
+          "title": "Epipremnum aureum",
+          "url": "https://en.wikipedia.org/wiki/Epipremnum_aureum"
+        }
+      ]
+    },
+    "care": {
+      "waterIntervalDays": {
+        "summer": 8,
+        "winter": 14
+      },
+      "light": "Bright, indirect light; the more white variegation on the leaves, the more light it needs to avoid reverting to solid green.",
+      "idealTempC": [18, 29]
+    },
+    "avatar": "avatars/pothos.svg",
+    "addedOn": "2026-09-10"
   }
 ]

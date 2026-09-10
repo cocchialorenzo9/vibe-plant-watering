@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <circle cx="256" cy="256" r="248" fill="#dde8d2"/>
+  <circle cx="256" cy="256" r="222" fill="#f2efe3"/>
+  <g transform="translate(256 320)">
+    <!-- pot -->
+    <path d="M-80 30 L80 30 L64 108 A20 20 0 0 1 44 124 L-44 124 A20 20 0 0 1 -64 108 Z" fill="#c9ccc6"/>
+    <rect x="-90" y="8" width="180" height="28" rx="14" fill="#9a9d96"/>
+    <!-- leaves (thick fan) -->
+    <path d="M0 4 C-40 -10 -74 -46 -78 -96 C-40 -90 -8 -54 0 4 Z" fill="#4f6b3e"/>
+    <path d="M0 4 C40 -10 74 -46 78 -96 C40 -90 8 -54 0 4 Z" fill="#5c7a4a"/>
+    <path d="M0 4 C-20 -16 -30 -50 -24 -84 C-6 -66 4 -34 0 4 Z" fill="#3f5732"/>
+    <!-- flower spike stakes -->
+    <path d="M-14 0 C-30 -80 -34 -160 -20 -220" stroke="#a97c50" stroke-width="4" fill="none"/>
+    <path d="M18 0 C34 -70 40 -140 30 -196" stroke="#a97c50" stroke-width="4" fill="none"/>
+    <!-- flowers -->
+    <g transform="translate(-20 -222)">
+      <circle r="20" fill="#e8875a"/>
+      <path d="M0 0 L-26 -14 M0 0 L26 -14 M0 0 L0 -28 M0 0 L-20 14 M0 0 L20 14" stroke="#e8875a" stroke-width="10" stroke-linecap="round"/>
+      <circle r="6" fill="#7a3a2a"/>
+    </g>
+    <g transform="translate(30 -198)">
+      <circle r="16" fill="#eea27a"/>
+      <path d="M0 0 L-20 -12 M0 0 L20 -12 M0 0 L0 -22" stroke="#eea27a" stroke-width="8" stroke-linecap="round"/>
+      <circle r="5" fill="#7a3a2a"/>
+    </g>
+  </g>
+</svg>
