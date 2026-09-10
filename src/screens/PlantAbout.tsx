@@ -45,6 +45,7 @@ export function PlantAbout() {
           <div className="hero__common">
             {plant.species.commonNames.join(" · ")}
           </div>
+          <div className="hero__italian">🇮🇹 {plant.species.italianName}</div>
         </div>
       </div>
 
