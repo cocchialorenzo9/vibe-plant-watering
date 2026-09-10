@@ -204,5 +204,38 @@
     },
     "avatar": "avatars/pothos.svg",
     "addedOn": "2026-09-10"
+  },
+  {
+    "id": "basil",
+    "nickname": "Basil",
+    "species": {
+      "scientificName": "Ocimum basilicum",
+      "commonNames": ["Basil", "Sweet basil"],
+      "italianName": "Basilico",
+      "shortDescription": "A fragrant culinary herb with glossy, oval, bright green leaves on square stems, grown as a fast-growing annual for its leaves rather than for show.",
+      "origin": "Native to tropical regions of Africa and Asia; cultivated worldwide",
+      "curiosities": [
+        "Its name comes from the Greek basileus (\"king\"), a nod to its regal fragrance; Roman legend even credited basil as an antidote to the mythical basilisk's venom.",
+        "Pinching off flower spikes as they form keeps the plant producing tender new leaves instead of going to seed and turning bitter.",
+        "It's said to have been brought to ancient Greece by Alexander the Great's campaigns, and has since become one of the most widely grown culinary herbs in the world."
+      ],
+      "toxicity": "Non-toxic to cats, dogs, and humans; a common culinary herb.",
+      "sources": [
+        {
+          "title": "Basil",
+          "url": "https://en.wikipedia.org/wiki/Basil"
+        }
+      ]
+    },
+    "care": {
+      "waterIntervalDays": {
+        "summer": 3,
+        "winter": 6
+      },
+      "light": "Full sun to bright light; needs several hours of direct or very bright light a day to stay compact and flavorful.",
+      "idealTempC": [18, 30]
+    },
+    "avatar": "avatars/basil.svg",
+    "addedOn": "2026-09-10"
   }
 ]
