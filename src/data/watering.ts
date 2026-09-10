@@ -70,8 +70,15 @@ function without(
 export interface WateringBackend {
   readonly kind: "local" | "firebase";
   load(signal?: AbortSignal): Promise<WateringData>;
-  /** Optional live sync; returns an unsubscribe function. */
-  subscribe?(onData: (data: WateringData) => void): () => void;
+  /**
+   * Optional live sync; returns an unsubscribe function. `onError` fires when
+   * the live listener itself fails (e.g. the DB rules reject the read) — the
+   * one-shot `load()` is otherwise the only error channel.
+   */
+  subscribe?(
+    onData: (data: WateringData) => void,
+    onError?: (err: Error) => void,
+  ): () => void;
   addEvents(events: WateringEvent[]): Promise<WateringData>;
   removeEvent(plantId: string, date: string): Promise<WateringData>;
   setOverride(plantId: string, override: PlantOverride): Promise<WateringData>;
@@ -187,9 +194,23 @@ function treeToData(raw: RawTree | null): WateringData {
   };
 }
 
-/** Drop keys whose value is `undefined` — Realtime Database rejects them. */
-function pruneUndefined<T extends object>(obj: T): Partial<T> {
+/**
+ * Serialise for Realtime Database: keys whose value is `undefined` are dropped
+ * (the SDK rejects them); an explicit `null` is kept and deletes that child on
+ * write, which is how "clear the next-due anchor" is expressed.
+ */
+function forDb<T extends object>(obj: T): Partial<T> {
   return JSON.parse(JSON.stringify(obj));
+}
+
+/** Wrap an RTDB write so a failure reaches the caller as a readable Error. */
+async function runWrite<T>(what: string, op: () => Promise<T>): Promise<T> {
+  try {
+    return await op();
+  } catch (e) {
+    const detail = e instanceof Error ? e.message : String(e);
+    throw new Error(`Couldn't ${what}: ${detail}`);
+  }
 }
 
 class FirebaseBackend implements WateringBackend {
@@ -205,50 +226,66 @@ class FirebaseBackend implements WateringBackend {
     return treeToData(snap.val());
   }
 
-  subscribe(onData: (data: WateringData) => void): () => void {
-    return onValue(this.root(), (snap) => onData(treeToData(snap.val())));
+  subscribe(
+    onData: (data: WateringData) => void,
+    onError?: (err: Error) => void,
+  ): () => void {
+    return onValue(
+      this.root(),
+      (snap) => onData(treeToData(snap.val())),
+      (err) => onError?.(err),
+    );
   }
 
   async addEvents(events: WateringEvent[]): Promise<WateringData> {
     const current = await this.load();
     const have = new Set(current.events.map((e) => eventKey(e.plantId, e.date)));
+    const added: WateringEvent[] = [];
     const patch: Record<string, WateringEvent> = {};
     for (const e of events) {
       const key = eventKey(e.plantId, e.date);
-      if (!have.has(key)) patch[key] = e;
+      if (have.has(key)) continue;
+      patch[key] = e;
+      added.push(e);
     }
-    if (Object.keys(patch).length > 0) {
-      await update(ref(this.db, `${WATERING_PATH}/events`), patch);
+    if (added.length > 0) {
+      await runWrite("log the watering", () =>
+        update(ref(this.db, `${WATERING_PATH}/events`), patch),
+      );
     }
-    return this.load();
+    return merge(current, added);
   }
 
   async removeEvent(plantId: string, date: string): Promise<WateringData> {
-    await remove(
-      ref(this.db, `${WATERING_PATH}/events/${eventKey(plantId, date)}`),
+    const current = await this.load();
+    await runWrite("undo the watering", () =>
+      remove(ref(this.db, `${WATERING_PATH}/events/${eventKey(plantId, date)}`)),
     );
-    return this.load();
+    return without(current, plantId, date);
   }
 
   async setOverride(
     plantId: string,
     override: PlantOverride,
   ): Promise<WateringData> {
-    await set(
-      ref(this.db, `${WATERING_PATH}/overrides/${plantId}`),
-      pruneUndefined(override),
+    const current = await this.load();
+    await runWrite("update the schedule", () =>
+      set(
+        ref(this.db, `${WATERING_PATH}/overrides/${plantId}`),
+        forDb(override),
+      ),
     );
-    return this.load();
+    return merge(current, [], { plantId, override });
   }
 
   async setSettings(
     patch: Partial<HouseholdSettings>,
   ): Promise<WateringData> {
-    await update(
-      ref(this.db, `${WATERING_PATH}/settings`),
-      pruneUndefined(patch),
+    const current = await this.load();
+    await runWrite("save the setting", () =>
+      update(ref(this.db, `${WATERING_PATH}/settings`), forDb(patch)),
     );
-    return this.load();
+    return merge(current, [], undefined, patch);
   }
 }
 

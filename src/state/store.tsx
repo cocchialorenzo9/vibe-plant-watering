@@ -65,23 +65,57 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const ac = new AbortController();
+    const fail = (e: unknown) => {
+      if (!ac.signal.aborted) {
+        setError(e instanceof Error ? e.message : "Failed to load");
+      }
+    };
     setLoading(true);
     setError(null);
-    Promise.all([fetchPlants(ac.signal), backend.load(ac.signal)])
-      .then(([p, w]) => {
-        setPlants(p);
-        setWatering(w);
+
+    let plantsReady = false;
+    let wateringReady = false;
+    const settle = () => {
+      if (plantsReady && wateringReady && !ac.signal.aborted) setLoading(false);
+    };
+
+    fetchPlants(ac.signal)
+      .then((p) => {
+        if (!ac.signal.aborted) setPlants(p);
       })
-      .catch((e: unknown) => {
-        if (!ac.signal.aborted) {
-          setError(e instanceof Error ? e.message : "Failed to load");
-        }
-      })
+      .catch(fail)
       .finally(() => {
-        if (!ac.signal.aborted) setLoading(false);
+        plantsReady = true;
+        settle();
       });
-    // Live sync: later writes from any device push straight into state.
-    const unsubscribe = backend.subscribe?.((w) => setWatering(w));
+
+    // Prefer the live listener as the single source of watering state — its
+    // first callback is the initial load, and it keeps pushing later writes
+    // from any device. Fall back to a one-shot read when unsupported (local).
+    let unsubscribe: (() => void) | undefined;
+    if (backend.subscribe) {
+      unsubscribe = backend.subscribe(
+        (w) => {
+          if (ac.signal.aborted) return;
+          setWatering(w);
+          wateringReady = true;
+          settle();
+        },
+        fail,
+      );
+    } else {
+      backend
+        .load(ac.signal)
+        .then((w) => {
+          if (!ac.signal.aborted) setWatering(w);
+        })
+        .catch(fail)
+        .finally(() => {
+          wateringReady = true;
+          settle();
+        });
+    }
+
     return () => {
       ac.abort();
       unsubscribe?.();

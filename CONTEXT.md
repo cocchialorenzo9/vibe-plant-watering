@@ -47,9 +47,9 @@ date editable only from the plant detail history.
 
 ### Watering store
 The single home for all mutable household state — Watering events, Overrides,
-and the reminder toggle. A subtree of the shared Firebase Realtime Database
-reused from the personal-site project; see ADR 0002. In development, with no
-Firebase key configured, a localStorage stand-in is used instead.
+and the reminder toggle — as one shared collection for the whole household.
+(Where it physically lives, and the development stand-in: see Decisions /
+ADR 0002.)
 
 ### Next due date
 Derived, never stored: (most recent Watering event date, or `addedOn` if the
@@ -86,7 +86,8 @@ has passed. The dashboard groups Plants by this.
   shared Firebase Realtime Database reused from the personal-site project.
   Writes go straight from the browser; no client secret (the web API key is a
   project id, not a credential); access is governed by DB security rules. See
-  ADR 0002.
+  ADR 0002. With no API key configured (local dev), a localStorage stand-in
+  seeded from `watering.example.json` is used instead.
 - The deployed web app is read-mostly: its only writes are logging Watering
   events and editing schedules/intervals. Registration is Claude-Code-only.
 - Tab bar: Plants / Add / History / Settings, where "Add" is a static

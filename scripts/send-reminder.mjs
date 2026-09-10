@@ -1,8 +1,9 @@
 // 7pm evening reminder. Run by .github/workflows/reminder.yml on a cron.
 //
 // Reads the authored plant list from this repo and the watering log from the
-// private data repo, computes what is due/overdue today (Europe/Berlin), and
-// emails a nudge via Resend if anything is still unwatered.
+// shared Firebase Realtime Database (REST API), computes what is due/overdue
+// today (Europe/Berlin), and emails a nudge via Resend if anything is still
+// unwatered.
 //
 // Requires Node >= 22 (imports the TypeScript domain modules directly via
 // type-stripping). Env:
