@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <circle cx="256" cy="256" r="248" fill="#dde8d2"/>
+  <circle cx="256" cy="256" r="222" fill="#f2efe3"/>
+  <g transform="translate(256 300)">
+    <!-- pot -->
+    <path d="M-88 40 L88 40 L70 130 A22 22 0 0 1 48 148 L-48 148 A22 22 0 0 1 -70 130 Z" fill="#efe7d6"/>
+    <rect x="-100" y="16" width="200" height="32" rx="16" fill="#be6a3c"/>
+    <!-- leaf 1 (lower left, olive with red midrib) -->
+    <g transform="translate(-16 4) rotate(-24)">
+      <path d="M0 0 C-46 -18 -78 -66 -70 -118 C-16 -108 20 -58 8 -4 Z" fill="#5c7a4a"/>
+      <path d="M0 0 C-46 -18 -78 -66 -70 -118" fill="none" stroke="#a8433a" stroke-width="4" stroke-linecap="round"/>
+      <path d="M-58 -96 C-42 -84 -26 -68 -14 -46" fill="none" stroke="#a8433a" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+      <path d="M-64 -78 C-48 -68 -34 -54 -22 -34" fill="none" stroke="#a8433a" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+      <path d="M-52 -106 C-58 -86 -56 -64 -44 -40" fill="none" stroke="#2f3d24" stroke-width="10" stroke-linecap="round" opacity="0.55"/>
+    </g>
+    <!-- leaf 2 (right, lighter olive) -->
+    <g transform="translate(14 -2) rotate(18)">
+      <path d="M0 0 C48 -14 82 -60 76 -112 C20 -104 -16 -54 -6 -2 Z" fill="#6f8f57"/>
+      <path d="M0 0 C48 -14 82 -60 76 -112" fill="none" stroke="#a8433a" stroke-width="4" stroke-linecap="round"/>
+      <path d="M58 -94 C44 -82 30 -66 20 -44" fill="none" stroke="#a8433a" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+      <path d="M66 -76 C52 -66 40 -52 30 -32" fill="none" stroke="#a8433a" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+      <path d="M50 -100 C56 -80 52 -58 40 -36" fill="none" stroke="#37471f" stroke-width="9" stroke-linecap="round" opacity="0.5"/>
+    </g>
+    <!-- leaf 3 (center back, upright) -->
+    <g transform="translate(0 -6)">
+      <path d="M0 -4 C-30 -50 -26 -108 0 -152 C26 -108 30 -50 0 -4 Z" fill="#4f6b3e"/>
+      <path d="M0 -8 L0 -148" fill="none" stroke="#a8433a" stroke-width="4" stroke-linecap="round"/>
+      <path d="M0 -40 C-14 -56 -20 -76 -18 -96" fill="none" stroke="#a8433a" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+      <path d="M0 -40 C14 -56 20 -76 18 -96" fill="none" stroke="#a8433a" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+    </g>
+  </g>
+</svg>

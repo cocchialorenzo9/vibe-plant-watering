@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "prayer-plant",
+    "nickname": "Prayer Plant",
+    "species": {
+      "scientificName": "Maranta leuconeura var. erythroneura",
+      "commonNames": [
+        "Red prayer plant",
+        "Herringbone plant",
+        "Red-veined prayer plant"
+      ],
+      "shortDescription": "A low, spreading evergreen grown for its oval olive-green leaves marked with a herringbone pattern of dark blotches and vivid red midribs and veins; the leaves lie flat by day and fold upright at night.",
+      "origin": "Understory of tropical rainforests in eastern Brazil",
+      "curiosities": [
+        "Each evening the leaves rise and fold together like praying hands, then flatten again at dawn — a daily motion called nyctinasty, driven by a hinge-like pulvinus at the base of every leaf stalk responding to fading light and an internal circadian clock.",
+        "The species name leuconeura is Greek for \"white-veined\", even though this particular variety, erythroneura, was named for its red (erythro-) veins instead.",
+        "Indoor plants occasionally produce small white or pale lavender flowers, though blooming is rare away from its native humidity."
+      ],
+      "toxicity": "Non-toxic to cats, dogs, and humans.",
+      "sources": [
+        {
+          "title": "Maranta leuconeura",
+          "url": "https://en.wikipedia.org/wiki/Maranta_leuconeura"
+        },
+        {
+          "title": "Prayer plant",
+          "url": "https://en.wikipedia.org/wiki/Prayer_plant"
+        }
+      ]
+    },
+    "care": {
+      "waterIntervalDays": {
+        "summer": 6,
+        "winter": 12
+      },
+      "light": "Bright, indirect light; tolerates medium light but leaf color and pattern are best out of direct sun, which scorches the leaves.",
+      "idealTempC": [18, 27]
+    },
+    "avatar": "avatars/prayer-plant.svg",
+    "addedOn": "2026-09-10"
+  }
+]
